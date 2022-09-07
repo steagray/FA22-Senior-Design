@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/mov.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/IconButton.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 537, 307 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 30, 30 )
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_right = 309.0
+margin_bottom = 73.0
+text = "The Button Button :D"
+
+[node name="Icon2" type="Sprite" parent="."]
+position = Vector2( 38, 290 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2( 449, 302 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Player"]
+texture = ExtResource( 1 )
+
+[connection signal="confirmButton" from="Icon" to="Icon2" method="_on_Icon_confirmButton"]
+[connection signal="pressed" from="Button" to="Icon" method="_on_Button_pressed"]
+[connection signal="pressed" from="Icon2" to="Icon" method="_on_Icon2_pressed"]
