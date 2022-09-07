@@ -8,12 +8,27 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "EditorVCSInterface",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://addons/godot-git-plugin/git_api.gdns"
+} ]
+_global_script_class_icons={
+"GitAPI": ""
+}
+
 [application]
 
 config/name="CSCI495Proj"
 run/main_scene="res://Scenes/TestScene.tscn"
 boot_splash/show_image=false
 config/icon="res://icon.png"
+
+[editor]
+
+version_control_autoload_on_startup=true
+version_control_plugin_name="GitAPI"
 
 [gui]
 
