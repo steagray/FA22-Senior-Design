@@ -40,7 +40,7 @@ func _on_Button_pressed():
 		canMove = false
 	if health < 0:
 		canMove = true
-		health = 3
+		health = 4
 
 
 func _on_Icon2_pressed():

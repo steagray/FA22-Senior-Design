@@ -8,7 +8,7 @@
 position = Vector2( 1, 0 )
 
 [node name="Icon" type="Sprite" parent="."]
-position = Vector2( 537, 307 )
+position = Vector2( 599, 191 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 30, 30 )
