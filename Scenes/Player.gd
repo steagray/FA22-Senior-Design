@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 
 # Declare member variables here. Examples:
@@ -20,16 +20,16 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("ui_right") and canMove:
 		print("Right")
-		position += Vector2.RIGHT * speed
+		move_and_collide(Vector2.RIGHT * speed)
 	if Input.is_action_pressed("ui_down") and canMove:
 		print("Down")
-		position += Vector2.DOWN * speed
+		move_and_collide(Vector2.DOWN * speed)
 	if Input.is_action_pressed("ui_up") and canMove:
 		print("Up")
-		position += Vector2.UP * speed
+		move_and_collide(Vector2.UP * speed)
 	if Input.is_action_pressed("ui_left") and canMove:
 		print("Left")
-		position += Vector2.LEFT * speed
+		move_and_collide(Vector2.LEFT * speed)
 	if Input.is_action_just_pressed("ui_accept") and canMove:
 		emit_signal("confirmButton")
 
@@ -49,7 +49,6 @@ func _on_Button_pressed():
 
 func _on_Icon2_pressed():
 	print("Enter Pressed!")
-	pass # Replace with function bod
 
 
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
