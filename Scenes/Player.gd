@@ -5,7 +5,7 @@ enum elem {FIRE, WATER, EARTH, AIR}
 
 # Declare member variables here.
 
-var speed = 5  # Movement speed
+var speed = 25  # Movement speed
 var health = 4  # Health
 var spellOne = {
 	"elem": elem.FIRE,
