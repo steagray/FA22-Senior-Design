@@ -5,30 +5,38 @@ enum elem {FIRE, WATER, EARTH, AIR}
 
 # Declare member variables here.
 
-var speed = 5
-var health = 4
-var spellOne = elem.FIRE
-var spellTwo = elem.WATER
-var soCD_MAX = 5
-var stCD_MAX = 5
-var soCD = 0  # Cooldown time for Spell One in seconds
-var stCD = 0  # Cooldown time for Spell Two in seconds
-var canMove = true
-var casting = false
+var speed = 5  # Movement speed
+var health = 4  # Health
+var spellOne = {
+	"elem": elem.FIRE,
+	"maxCD": 5,
+	"currCD": 0
+}
+var spellTwo = {
+	"elem": elem.FIRE,
+	"maxCD": 5,
+	"currCD": 0
+}
+var canMove = true  # Whether the player is able to move or not
+var isCasting = false  # Whether player is currently casting a spell
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
+# Called when the node is about to leave SceneTree upon freeing or scene changing
+func _exit_tree():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if soCD > 0:
-		soCD -= delta
-		print(soCD)
-	if stCD > 0:
-		stCD -= delta
-		print(stCD)
+	# Cooldown timer
+	if spellOne.currCD > 0:
+		spellOne.currCD -= delta
+	if spellTwo.currCD > 0:
+		spellTwo.currCD -= delta
+	
+	# Movement handling
 	if Input.is_action_pressed("ui_right") and canMove:
 		move_and_collide(Vector2.RIGHT * speed)
 	if Input.is_action_pressed("ui_down") and canMove:
@@ -39,12 +47,12 @@ func _process(delta):
 		move_and_collide(Vector2.LEFT * speed)
 
 func _input(event):
-	if event.is_action_pressed("spell_one") and not soCD > 0:
-		soCD = soCD_MAX
-	if event.is_action_pressed("spell_two") and not stCD > 0:
-		stCD = stCD_MAX
+	if event.is_action_pressed("spell_one") and not spellOne.currCD > 0:
+		spellOne()
+	if event.is_action_pressed("spell_two") and not spellTwo.currCD > 0:
+		spellTwo()
 
-func healthdown():
+func takedmg():
 	health -= 1
 	if health == 0:
 		print("I am die, thank you 4eva")
@@ -54,8 +62,11 @@ func healthdown():
 		health = 4
 		print("RESPAWN")
 
-func _on_Button_pressed():
-	healthdown()
+func spellOne():
+	spellOne.currCD = spellOne.maxCD
 
-func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	healthdown()
+func spellTwo():
+	spellTwo.currCD = spellTwo.maxCD
+
+func _on_Button_pressed():
+	takedmg()
