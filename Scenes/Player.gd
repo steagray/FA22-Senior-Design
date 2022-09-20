@@ -10,12 +10,14 @@ var health = 4  # Health
 var spellOne = {
 	"elem": elem.FIRE,
 	"maxCD": 5,
-	"currCD": 0
+	"currCD": 0,
+	"upgrades": []
 }
 var spellTwo = {
 	"elem": elem.FIRE,
 	"maxCD": 5,
-	"currCD": 0
+	"currCD": 0,
+	"upgrades": []
 }
 var canMove = true  # Whether the player is able to move or not
 var isCasting = false  # Whether player is currently casting a spell
@@ -47,26 +49,25 @@ func _process(delta):
 		move_and_collide(Vector2.LEFT * speed)
 
 func _input(event):
-	if event.is_action_pressed("spell_one") and not spellOne.currCD > 0:
-		spellOne()
-	if event.is_action_pressed("spell_two") and not spellTwo.currCD > 0:
-		spellTwo()
+	if event.is_action_pressed("spell_one"):
+		castSpell(spellOne)
+	if event.is_action_pressed("spell_two"):
+		castSpell(spellTwo)
 
 func takedmg():
 	health -= 1
 	if health == 0:
 		print("I am die, thank you 4eva")
 		canMove = false
+
+func castSpell(spell):
+	if spell.currCD > 0:
+		return
+	spell.currCD = spell.maxCD
+
+func _on_Button_pressed():
+	takedmg()
 	if health < 0:
 		canMove = true
 		health = 4
 		print("RESPAWN")
-
-func spellOne():
-	spellOne.currCD = spellOne.maxCD
-
-func spellTwo():
-	spellTwo.currCD = spellTwo.maxCD
-
-func _on_Button_pressed():
-	takedmg()
