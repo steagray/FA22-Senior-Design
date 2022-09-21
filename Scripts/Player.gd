@@ -34,12 +34,16 @@ func _process(delta):
 	
 	# Movement handling
 	if Input.is_action_pressed("ui_right") and canMove and not isCasting:
+		rotation_degrees = 90
 		move_and_collide(Vector2.RIGHT * stats.speed)
 	if Input.is_action_pressed("ui_down") and canMove and not isCasting:
+		rotation_degrees = 180
 		move_and_collide(Vector2.DOWN * stats.speed)
 	if Input.is_action_pressed("ui_up") and canMove and not isCasting:
+		rotation_degrees = 0
 		move_and_collide(Vector2.UP * stats.speed)
 	if Input.is_action_pressed("ui_left") and canMove and not isCasting:
+		rotation_degrees = 270
 		move_and_collide(Vector2.LEFT * stats.speed)
 
 func _input(event):
