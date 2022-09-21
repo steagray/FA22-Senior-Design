@@ -34,13 +34,13 @@ func _process(delta):
 	
 	# Movement handling
 	if Input.is_action_pressed("ui_right") and canMove and not isCasting:
-		move_and_collide(Vector2.RIGHT * speed)
+		move_and_collide(Vector2.RIGHT * stats.speed)
 	if Input.is_action_pressed("ui_down") and canMove and not isCasting:
-		move_and_collide(Vector2.DOWN * speed)
+		move_and_collide(Vector2.DOWN * stats.speed)
 	if Input.is_action_pressed("ui_up") and canMove and not isCasting:
-		move_and_collide(Vector2.UP * speed)
+		move_and_collide(Vector2.UP * stats.speed)
 	if Input.is_action_pressed("ui_left") and canMove and not isCasting:
-		move_and_collide(Vector2.LEFT * speed)
+		move_and_collide(Vector2.LEFT * stats.speed)
 
 func _input(event):
 	if event.is_action_pressed("spell_one"):
@@ -49,8 +49,8 @@ func _input(event):
 		castSpell(spelltwo)
 
 func takedmg():
-	health -= 1
-	if health == 0:
+	stats.health -= 1
+	if stats.health == 0:
 		print("I am die, thank you 4eva")
 		canMove = false
 
@@ -58,13 +58,13 @@ func castSpell(spell):
 	if spell.currCD > 0:
 		return
 	isCasting = true
-	castTimer = castTimer_MAX
+	castTimer = stats.castTimer_MAX
 	# Create projectile
 	spell.currCD = spell.maxCD
 
 func _on_Button_pressed():
 	takedmg()
-	if health < 0:
+	if stats.health < 0:
 		canMove = true
-		health = 4
+		stats.health = 4
 		print("RESPAWN")
