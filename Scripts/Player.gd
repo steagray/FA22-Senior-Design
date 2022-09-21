@@ -1,24 +1,12 @@
 extends KinematicBody2D
 
-enum elem {FIRE, WATER, EARTH, AIR}
 
 
 # Declare member variables here.
 
-var speed = 25  # Movement speed
-var health = 4  # Health
-var spellOne = {
-	"elem": elem.FIRE,
-	"maxCD": 5,
-	"currCD": 0,
-	"upgrades": []
-}
-var spellTwo = {
-	"elem": elem.FIRE,
-	"maxCD": 5,
-	"currCD": 0,
-	"upgrades": []
-}
+#var speed = 10  # Movement speed
+
+var castTimer = 0
 var canMove = true  # Whether the player is able to move or not
 var isCasting = false  # Whether player is currently casting a spell
 
@@ -33,26 +21,32 @@ func _exit_tree():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# Cooldown timer
-	if spellOne.currCD > 0:
-		spellOne.currCD -= delta
-	if spellTwo.currCD > 0:
-		spellTwo.currCD -= delta
+	if spellone.currCD > 0:
+		spellone.currCD -= delta
+	if spelltwo.currCD > 0:
+		spelltwo.currCD -= delta
+	
+	# Cast delay
+	if castTimer > 0:
+		castTimer -= delta
+	elif isCasting:
+		isCasting = false
 	
 	# Movement handling
-	if Input.is_action_pressed("ui_right") and canMove:
+	if Input.is_action_pressed("ui_right") and canMove and not isCasting:
 		move_and_collide(Vector2.RIGHT * speed)
-	if Input.is_action_pressed("ui_down") and canMove:
+	if Input.is_action_pressed("ui_down") and canMove and not isCasting:
 		move_and_collide(Vector2.DOWN * speed)
-	if Input.is_action_pressed("ui_up") and canMove:
+	if Input.is_action_pressed("ui_up") and canMove and not isCasting:
 		move_and_collide(Vector2.UP * speed)
-	if Input.is_action_pressed("ui_left") and canMove:
+	if Input.is_action_pressed("ui_left") and canMove and not isCasting:
 		move_and_collide(Vector2.LEFT * speed)
 
 func _input(event):
 	if event.is_action_pressed("spell_one"):
-		castSpell(spellOne)
+		castSpell(spellone)
 	if event.is_action_pressed("spell_two"):
-		castSpell(spellTwo)
+		castSpell(spelltwo)
 
 func takedmg():
 	health -= 1
@@ -63,6 +57,9 @@ func takedmg():
 func castSpell(spell):
 	if spell.currCD > 0:
 		return
+	isCasting = true
+	castTimer = castTimer_MAX
+	# Create projectile
 	spell.currCD = spell.maxCD
 
 func _on_Button_pressed():
