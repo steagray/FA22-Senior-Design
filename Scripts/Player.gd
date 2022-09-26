@@ -47,6 +47,14 @@ func _input(event):
 		castSpell(spellone)
 	if event.is_action_pressed("spell_two"):
 		castSpell(spelltwo)
+	if event.is_action_pressed("ui_right"):
+		rotation_degrees = 90
+	if event.is_action_pressed("ui_down"):
+		rotation_degrees = 180
+	if event.is_action_pressed("ui_up"):
+		rotation_degrees = 0
+	if event.is_action_pressed("ui_left"):
+		rotation_degrees = 270
 
 func takedmg():
 	stats.health -= 1
