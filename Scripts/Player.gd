@@ -43,17 +43,21 @@ func _process(delta):
 		move_and_collide(Vector2.LEFT * stats.speed)
 
 func _input(event):
-	if event.is_action_pressed("spell_one"):
+	if event.is_action_pressed("spell_one") and spellone.active:
 		castSpell(spellone)
-	if event.is_action_pressed("spell_two"):
+	if event.is_action_pressed("spell_two") and spelltwo.active:
 		castSpell(spelltwo)
 	if event.is_action_pressed("ui_right"):
+		self.get_child(0).rotation_degrees = 270
 		rotation_degrees = 90
 	if event.is_action_pressed("ui_down"):
+		self.get_child(0).rotation_degrees = 180
 		rotation_degrees = 180
 	if event.is_action_pressed("ui_up"):
+		self.get_child(0).rotation_degrees = 0
 		rotation_degrees = 0
 	if event.is_action_pressed("ui_left"):
+		self.get_child(0).rotation_degrees = 90
 		rotation_degrees = 270
 
 func takedmg():
