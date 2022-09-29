@@ -47,4 +47,11 @@ polygon = PoolVector2Array( 298.01, -392, 309.122, -398, 324.275, -403, 329.326,
 [node name="M_T_1_Hitbox" type="CollisionPolygon2D" parent="Melee Tank 1/Area2D"]
 polygon = PoolVector2Array( 298.01, -392, 309.122, -398, 324.275, -403, 329.326, -418, 335.387, -430, 341.448, -418, 345.489, -403, 361.652, -398, 372.765, -392, 361.652, -386, 346.499, -382, 342.458, -369, 335.387, -355, 328.316, -369, 324.275, -382, 310.132, -387 )
 
+[node name="Button" type="Button" parent="."]
+margin_left = 1065.0
+margin_top = 439.0
+margin_right = 1308.0
+margin_bottom = 480.0
+
 [connection signal="body_entered" from="Melee Tank 1/Area2D" to="Player" method="_on_Area2D_body_entered"]
+[connection signal="pressed" from="Button" to="Melee Tank 1" method="_on_Button_pressed"]
