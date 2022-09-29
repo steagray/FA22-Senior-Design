@@ -2,7 +2,7 @@ extends Node
 
 
 # Declare member variables here.
-var speed = 50
+var speed = 5
 var health = 4  # Health
 var castTimer_MAX = 0.5
 

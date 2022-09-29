@@ -9,6 +9,8 @@ extends KinematicBody2D
 var castTimer = 0
 var canMove = true  # Whether the player is able to move or not
 var isCasting = false  # Whether player is currently casting a spell
+var damageCooldown = 0.0
+var canTakeDmg = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,6 +27,11 @@ func _process(delta):
 		spellone.currCD -= delta
 	if spelltwo.currCD > 0:
 		spelltwo.currCD -= delta
+	# Damage Immunity Cooldown
+	if damageCooldown > 0:
+		damageCooldown -= delta
+	else:
+		canTakeDmg = true
 	
 	# Cast delay
 	if castTimer > 0:
@@ -57,7 +64,10 @@ func _input(event):
 		rotation_degrees = 270
 
 func takedmg():
+	print("Ow!")
 	stats.health -= 1
+	damageCooldown += 1
+	canTakeDmg = false
 	if stats.health == 0:
 		print("I am die, thank you 4eva")
 		canMove = false
@@ -76,3 +86,10 @@ func _on_Button_pressed():
 		canMove = true
 		stats.health = 4
 		print("RESPAWN")
+
+
+func _on_Area2D_body_entered(body):
+	if canTakeDmg == true:
+		takedmg()
+	else:
+		pass
