@@ -76,3 +76,12 @@ func _on_Button_pressed():
 		canMove = true
 		stats.health = 4
 		print("RESPAWN")
+
+
+func _on_OverworldLoad_body_entered(body):
+	print(body.get_instance_id())
+	if body.get_instance_id() == 1328:
+		
+		get_tree().change_scene("res://Scenes/Overworld.tscn")
+		return
+	print(body)
