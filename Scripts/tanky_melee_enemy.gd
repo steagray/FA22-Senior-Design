@@ -17,7 +17,6 @@ func _exit_tree():
 # Function call for taking damage. Removes sprite from scene when killed
 func takedmg():
 	enemy_health -= 1
-	print(spellone.ELEMENT)
 	if enemy_health <= 0:
 		can_move = false
 		queue_free()
