@@ -4,11 +4,8 @@ extends KinematicBody2D
 
 # Declare member variables here.
 
-#var speed = 10  # Movement speed
-
 var castTimer = 0
 var canMove = true  # Whether the player is able to move or not
-var isCasting = false  # Whether player is currently casting a spell
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,24 +26,25 @@ func _process(delta):
 	# Cast delay
 	if castTimer > 0:
 		castTimer -= delta
-	elif isCasting:
-		isCasting = false
 	
 	# Movement handling
-	if Input.is_action_pressed("ui_right") and canMove and not isCasting:
-		move_and_collide(Vector2.RIGHT * stats.speed)
-	if Input.is_action_pressed("ui_down") and canMove and not isCasting:
-		move_and_collide(Vector2.DOWN * stats.speed)
-	if Input.is_action_pressed("ui_up") and canMove and not isCasting:
-		move_and_collide(Vector2.UP * stats.speed)
-	if Input.is_action_pressed("ui_left") and canMove and not isCasting:
-		move_and_collide(Vector2.LEFT * stats.speed)
+	if canMove and castTimer <= 0:
+		if Input.is_action_pressed("ui_right"):
+			move_and_collide(Vector2.RIGHT * stats.speed)
+		if Input.is_action_pressed("ui_down"):
+			move_and_collide(Vector2.DOWN * stats.speed)
+		if Input.is_action_pressed("ui_up"):
+			move_and_collide(Vector2.UP * stats.speed)
+		if Input.is_action_pressed("ui_left"):
+			move_and_collide(Vector2.LEFT * stats.speed)
 
 func _input(event):
 	if event.is_action_pressed("spell_one") and spellone.active:
 		castSpell(spellone)
 	if event.is_action_pressed("spell_two") and spelltwo.active:
 		castSpell(spelltwo)
+	
+	# Directional handling
 	if event.is_action_pressed("ui_right"):
 		self.get_node("PlayerCam").rotation_degrees = 270
 		rotation_degrees = 90
@@ -69,9 +67,8 @@ func takedmg():
 func castSpell(spell):
 	if spell.currCD > 0:
 		return
-	isCasting = true
 	castTimer = stats.castTimer_MAX
-	# Create projectile
+	# TODO: Create projectile
 	spell.currCD = spell.maxCD
 
 func _on_Button_pressed():
@@ -84,6 +81,6 @@ func _on_Button_pressed():
 
 func _on_OverworldLoad_body_entered(body):
 	if body.get_instance_id() == self.get_parent().get_node("KinematicPlayer2D").get_instance_id():
-		#program fade out
+		#TODO: fade out
 		get_tree().change_scene("res://Scenes/Overworld.tscn")
 		return
