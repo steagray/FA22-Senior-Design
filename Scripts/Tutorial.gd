@@ -8,6 +8,12 @@ var elemOrder = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Set up UI
+	var UI = load("res://Scenes/UI.tscn").instance()
+	self.get_node("KinematicPlayer2D/PlayerCam").add_child(UI)
+	
+	UI.rect_size = Vector2(1000, 300)
+	
 	# Creates a random permutation of the values 1-4 in an array that will define the order elements are offered
 	randomize()
 	while elemOrder.size() < 4:

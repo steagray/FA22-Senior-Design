@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/player.png" type="Texture" id=2]
 [ext_resource path="res://Assets/TutorailTilesetTest.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/Tutorial.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Tutorial.gd" type="Script" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -94,7 +94,7 @@ zoom = Vector2( 1.4, 1.4 )
 [node name="RichTextLabel" type="RichTextLabel" parent="KinematicPlayer2D/PlayerCam"]
 margin_left = -666.0
 margin_top = 284.0
-margin_right = 669.0
+margin_right = 677.0
 margin_bottom = 373.0
 script = ExtResource( 4 )
 
