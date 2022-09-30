@@ -7,7 +7,7 @@ extends ProgressBar
 var spellobj
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _enter_tree():
 	spellobj = null
 	pass
 	

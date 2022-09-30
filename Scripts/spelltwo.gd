@@ -4,7 +4,6 @@ extends "res://Scripts/spell.gd"
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var active = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

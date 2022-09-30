@@ -9,8 +9,7 @@ extends "res://Scripts/UI_spellbar.gd"
 func _ready():
 	pass
 
-func _input(event):
-	# This is a brute force fix. Try something better
+func _enter_tree():
 	setObj(spellone)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -8,11 +8,6 @@ var elemOrder = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Set up UI
-	
-	print(get_node("/root").size)
-	#UI.rect_size = get_node("/root").size
-	
 	# Creates a random permutation of the values 1-4 in an array that will define the order elements are offered
 	randomize()
 	while elemOrder.size() < 4:
