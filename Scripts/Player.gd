@@ -83,9 +83,7 @@ func _on_Button_pressed():
 
 
 func _on_OverworldLoad_body_entered(body):
-	print(body.get_instance_id())
-	if body.get_instance_id() == 1328:
-		
+	if body.get_instance_id() == self.get_parent().get_child(2).get_instance_id():
+		#program fade out
 		get_tree().change_scene("res://Scenes/Overworld.tscn")
 		return
-	print(body)
