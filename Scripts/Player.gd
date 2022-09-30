@@ -48,16 +48,16 @@ func _input(event):
 	if event.is_action_pressed("spell_two") and spelltwo.active:
 		castSpell(spelltwo)
 	if event.is_action_pressed("ui_right"):
-		self.get_child(0).rotation_degrees = 270
+		self.get_node("PlayerCam").rotation_degrees = 270
 		rotation_degrees = 90
 	if event.is_action_pressed("ui_down"):
-		self.get_child(0).rotation_degrees = 180
+		self.get_node("PlayerCam").rotation_degrees = 180
 		rotation_degrees = 180
 	if event.is_action_pressed("ui_up"):
-		self.get_child(0).rotation_degrees = 0
+		self.get_node("PlayerCam").rotation_degrees = 0
 		rotation_degrees = 0
 	if event.is_action_pressed("ui_left"):
-		self.get_child(0).rotation_degrees = 90
+		self.get_node("PlayerCam").rotation_degrees = 90
 		rotation_degrees = 270
 
 func takedmg():
@@ -83,7 +83,7 @@ func _on_Button_pressed():
 
 
 func _on_OverworldLoad_body_entered(body):
-	if body.get_instance_id() == self.get_parent().get_child(2).get_instance_id():
+	if body.get_instance_id() == self.get_parent().get_node("KinematicPlayer2D").get_instance_id():
 		#program fade out
 		get_tree().change_scene("res://Scenes/Overworld.tscn")
 		return

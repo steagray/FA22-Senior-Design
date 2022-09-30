@@ -8,8 +8,6 @@ var active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.element = self.elem.WATER
-	print(self.element)
 	pass # Replace with function body.
 
 
