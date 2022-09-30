@@ -107,4 +107,5 @@ position = Vector2( 6658.25, 170.5 )
 shape = SubResource( 7 )
 
 [connection signal="pressed" from="Button" to="KinematicPlayer2D" method="_on_Button_pressed"]
+[connection signal="body_entered" from="OverworldLoad" to="." method="_on_OverworldLoad_body_entered"]
 [connection signal="body_entered" from="OverworldLoad" to="KinematicPlayer2D" method="_on_OverworldLoad_body_entered"]

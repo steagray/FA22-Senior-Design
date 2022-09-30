@@ -14,7 +14,6 @@ func _ready():
 	
 	self.connect("onDamage", UI.get_node("HealthBar"), "on_onDamage")
 	$PlayerCam.add_child(UI)
-	pass # Replace with function body.
 
 # Called when the node is about to leave SceneTree upon freeing or scene changing
 func _exit_tree():
@@ -71,10 +70,3 @@ func _on_Button_pressed():
 		stats.health = 4
 		emit_signal("onDamage")
 		print("RESPAWN")
-
-
-func _on_OverworldLoad_body_entered(body):
-	if body.get_instance_id() == self.get_instance_id():
-		#TODO: stage transition
-		get_tree().change_scene("res://Scenes/Overworld.tscn")
-		return

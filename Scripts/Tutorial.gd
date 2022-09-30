@@ -16,6 +16,12 @@ func _ready():
 			elemOrder.append(ele)
 	# spawn 4 items
 
+func _on_OverworldLoad_body_entered(body):
+	if body.get_instance_id() == $KinematicPlayer2D.get_instance_id():
+		#TODO: stage transition
+		get_tree().change_scene("res://Scenes/Overworld.tscn")
+		return
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

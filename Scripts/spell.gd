@@ -13,7 +13,6 @@ var active = true
 func _ready():
 	pass # Replace with function body.
 
-
 func castSpell():
 	if currCD > 0:
 		return
