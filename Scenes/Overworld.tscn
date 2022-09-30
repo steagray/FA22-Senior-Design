@@ -1,3 +1,13 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/RET2TUT.gd" type="Script" id=1]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 313.0
+margin_top = 181.0
+margin_right = 680.0
+margin_bottom = 421.0
+text = "RETURN TO TUTORIAL"
+script = ExtResource( 1 )
