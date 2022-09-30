@@ -12,7 +12,8 @@ func _ready():
 	var UI = load("res://Scenes/UI.tscn").instance()
 	self.get_node("KinematicPlayer2D/PlayerCam").add_child(UI)
 	
-	UI.rect_size = Vector2(1000, 300)
+	print(get_node("/root").size)
+	UI.rect_size = get_node("/root").size
 	
 	# Creates a random permutation of the values 1-4 in an array that will define the order elements are offered
 	randomize()

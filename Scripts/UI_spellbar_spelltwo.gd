@@ -1,4 +1,4 @@
-extends Node
+extends "res://Scripts/UI_spellbar.gd"
 
 
 # Declare member variables here. Examples:
@@ -8,9 +8,10 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-	#self.spellobj = spelltwo
+	call_deferred("self.setObj(spelltwo)")
 
+func _input(event):
+	setObj(spelltwo)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
