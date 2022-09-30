@@ -9,12 +9,9 @@ var elemOrder = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Set up UI
-	var UI = load("res://Scenes/UI.tscn").instance()
-	self.get_node("KinematicPlayer2D/PlayerCam").add_child(UI)
-	$KinematicPlayer2D.connect("onDamage", UI.get_node("HealthBar"), "on_onDamage")
 	
 	print(get_node("/root").size)
-	UI.rect_size = get_node("/root").size
+	#UI.rect_size = get_node("/root").size
 	
 	# Creates a random permutation of the values 1-4 in an array that will define the order elements are offered
 	randomize()
@@ -28,6 +25,3 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
-func _on_KinematicPlayer2D_onDamage():
-	pass # Replace with function body.

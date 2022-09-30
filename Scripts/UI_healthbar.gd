@@ -8,7 +8,7 @@ extends TextureProgress
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	max_value = stats.maxHP
+	max_value = 8
 	value = stats.health
 
 

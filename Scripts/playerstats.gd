@@ -5,7 +5,7 @@ extends Node
 var speed = 15
 var maxHP = 4
 var health = 4  # Health
-var castTimer_MAX = 0.5
+var castTimer_MAX = 0.2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -11,6 +11,10 @@ signal onDamage
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var UI = load("res://Scenes/UI.tscn").instance()
+	
+	self.connect("onDamage", UI.get_node("HealthBar"), "on_onDamage")
+	$PlayerCam.add_child(UI)
 	pass # Replace with function body.
 
 # Called when the node is about to leave SceneTree upon freeing or scene changing
@@ -84,7 +88,7 @@ func _on_Button_pressed():
 
 
 func _on_OverworldLoad_body_entered(body):
-	if body.get_instance_id() == self.get_parent().get_node("KinematicPlayer2D").get_instance_id():
-		#TODO: fade out
+	if body.get_instance_id() == self.get_instance_id():
+		#TODO: stage transition
 		get_tree().change_scene("res://Scenes/Overworld.tscn")
 		return
