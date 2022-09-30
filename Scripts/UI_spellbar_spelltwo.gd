@@ -8,9 +8,10 @@ extends "res://Scripts/UI_spellbar.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	call_deferred("self.setObj(spelltwo)")
+	pass
 
 func _input(event):
+	# This is a brute force fix. Try something better
 	setObj(spelltwo)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

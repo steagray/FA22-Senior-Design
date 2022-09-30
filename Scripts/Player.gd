@@ -7,6 +7,8 @@ extends KinematicBody2D
 var castTimer = 0
 var canMove = true  # Whether the player is able to move or not
 
+signal onDamage
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -60,6 +62,7 @@ func _input(event):
 
 func takedmg():
 	stats.health -= 1
+	emit_signal("onDamage")
 	if stats.health == 0:
 		print("I am die, thank you 4eva")
 		canMove = false
@@ -76,6 +79,7 @@ func _on_Button_pressed():
 	if stats.health < 0:
 		canMove = true
 		stats.health = 4
+		emit_signal("onDamage")
 		print("RESPAWN")
 
 

@@ -11,6 +11,7 @@ func _ready():
 	# Set up UI
 	var UI = load("res://Scenes/UI.tscn").instance()
 	self.get_node("KinematicPlayer2D/PlayerCam").add_child(UI)
+	$KinematicPlayer2D.connect("onDamage", UI.get_node("HealthBar"), "on_onDamage")
 	
 	print(get_node("/root").size)
 	UI.rect_size = get_node("/root").size
@@ -26,3 +27,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_KinematicPlayer2D_onDamage():
+	pass # Replace with function body.
