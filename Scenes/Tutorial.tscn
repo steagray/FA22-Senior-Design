@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/player.png" type="Texture" id=2]
@@ -64,6 +64,9 @@ extents = Vector2( 26, 28 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 95.25, 352.5 )
 
+[sub_resource type="CircleShape2D" id=8]
+radius = 157.0
+
 [node name="Node2D" type="Node2D"]
 position = Vector2( 1, 0 )
 
@@ -104,5 +107,12 @@ position = Vector2( 0, -4 )
 position = Vector2( 6658.25, 170.5 )
 shape = SubResource( 7 )
 
+[node name="UnderworldLoad" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnderworldLoad"]
+position = Vector2( 2244, 552 )
+shape = SubResource( 8 )
+
 [connection signal="pressed" from="Button" to="KinematicPlayer2D" method="_on_Button_pressed"]
 [connection signal="body_entered" from="OverworldLoad" to="KinematicPlayer2D" method="_on_OverworldLoad_body_entered"]
+[connection signal="body_entered" from="UnderworldLoad" to="KinematicPlayer2D" method="_on_UnderworldLoad_body_entered"]

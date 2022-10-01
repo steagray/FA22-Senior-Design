@@ -85,3 +85,7 @@ func _on_OverworldLoad_body_entered(body):
 		get_tree().change_scene("res://Scenes/Overworld.tscn")
 		return
 	print(body)
+
+
+func _on_UnderworldLoad_body_entered(body):
+	get_tree().change_scene("res://Scenes/Underworld.tscn")
