@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 26, 28 )
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="KinematicPlayer2D" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="PlayerCam" type="Camera2D" parent="."]
