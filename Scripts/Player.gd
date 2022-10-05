@@ -13,6 +13,7 @@ func _ready():
 	var UI = load("res://Scenes/UI.tscn").instance()
 	
 	self.connect("onDamage", UI.get_node("HealthBar"), "on_onDamage")
+	var Player = load("res://Scenes/Player.tscn")
 	$PlayerCam.add_child(UI)
 
 # Called when the node is about to leave SceneTree upon freeing or scene changing
