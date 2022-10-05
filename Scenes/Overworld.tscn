@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/RET2TUT.gd" type="Script" id=1]
-[ext_resource path="res://Assets/player.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Overworld.gd" type="Script" id=4]
 [ext_resource path="res://Assets/TutorailTilesetTest.png" type="Texture" id=5]
 
@@ -84,9 +83,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 } ]
 3/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 26, 28 )
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -103,19 +99,5 @@ tile_set = SubResource( 3 )
 format = 1
 tile_data = PoolIntArray( -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131058, 0, 0, -131057, 0, 0, -131056, 0, 0, -131055, 0, 0, -131054, 0, 0, -131053, 0, 0, -131052, 0, 0, -131051, 0, 0, -65536, 0, 0, -65518, 3, 0, -65517, 3, 0, -65516, 3, 0, -65515, 0, 0, 0, 0, 0, 18, 3, 0, 19, 3, 0, 20, 3, 0, 21, 0, 0, 65536, 0, 0, 65554, 3, 0, 65555, 3, 0, 65556, 3, 0, 65557, 0, 0, 131072, 0, 0, 131090, 3, 0, 131091, 3, 0, 131092, 3, 0, 131093, 0, 0, 524288, 0, 0, 524309, 0, 0, 589824, 0, 0, 589845, 0, 0, 655360, 0, 0, 655381, 0, 0, 720896, 0, 0, 720917, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 786452, 0, 0, 786453, 0, 0 )
 
-[node name="KinematicPlayer2D" type="KinematicBody2D" parent="."]
-position = Vector2( 364, 302 )
-script = ExtResource( 3 )
-
-[node name="PlayerCam" type="Camera2D" parent="KinematicPlayer2D"]
-current = true
-zoom = Vector2( 1.4, 1.4 )
-
-[node name="Sprite" type="Sprite" parent="KinematicPlayer2D"]
-position = Vector2( -2, 0 )
-scale = Vector2( 0.251859, 0.417382 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicPlayer2D"]
-position = Vector2( -1, -1 )
-shape = SubResource( 1 )
+[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 698, 356 )

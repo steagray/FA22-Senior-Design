@@ -13,6 +13,7 @@ func _ready():
 	var UI = load("res://Scenes/UI.tscn").instance()
 	
 	self.connect("onDamage", UI.get_node("HealthBar"), "on_onDamage")
+	var Player = load("res://Scenes/Player.tscn")
 	$PlayerCam.add_child(UI)
 
 # Called when the node is about to leave SceneTree upon freeing or scene changing
@@ -26,6 +27,9 @@ func _process(delta):
 		spellone.currCD -= delta
 	if spelltwo.currCD > 0:
 		spelltwo.currCD -= delta
+	# Damage Immunity Cooldown
+	#if damageCooldown > 0:
+	#	damageCooldown -= delta
 	
 	# Movement handling
 	if stats.canMove:
@@ -57,6 +61,7 @@ func _input(event):
 	$PlayerCam.rotation_degrees = 360 - rotation_degrees
 
 func takedmg():
+	print("Ow!")
 	stats.health -= 1
 	emit_signal("onDamage")
 	if stats.health == 0:
@@ -70,3 +75,8 @@ func _on_Button_pressed():
 		stats.health = 4
 		emit_signal("onDamage")
 		print("RESPAWN")
+
+
+func _on_Area2D_body_entered(body):
+	#if not damageCooldown > 0:
+		takedmg()
