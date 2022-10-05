@@ -27,8 +27,8 @@ func _process(delta):
 	if spelltwo.currCD > 0:
 		spelltwo.currCD -= delta
 	# Damage Immunity Cooldown
-	if damageCooldown > 0:
-		damageCooldown -= delta
+	#if damageCooldown > 0:
+	#	damageCooldown -= delta
 	
 	# Movement handling
 	if stats.canMove:
@@ -77,5 +77,5 @@ func _on_Button_pressed():
 
 
 func _on_Area2D_body_entered(body):
-	if not damageCooldown > 0:
+	#if not damageCooldown > 0:
 		takedmg()

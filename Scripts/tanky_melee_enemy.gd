@@ -3,6 +3,7 @@ extends KinematicBody2D
 var enemy_health = 2
 var attack_cooldown = 2
 var isAggro
+var i = 0
 
 func _ready():
 	_on_BehaviorTimer_timeout()
@@ -10,6 +11,9 @@ func _ready():
 # Called when the node is about to leave SceneTree upon freeing or scene changing
 func _exit_tree():
 	pass
+
+func _process(delta):
+	move_and_collide(Vector2.RIGHT)
 
 func _input(event):
 	move_and_collide(Vector2.UP)
