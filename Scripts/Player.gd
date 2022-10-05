@@ -78,5 +78,5 @@ func _on_Button_pressed():
 
 
 func _on_Area2D_body_entered(body):
-	#if not damageCooldown > 0:
+	if body.get_instance_id() == $KinematicPlayer2D.get_instance_id():
 		takedmg()
