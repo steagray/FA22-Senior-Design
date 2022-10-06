@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/melee_tank.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/tanky_melee_enemy.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 37.0
 
 [node name="MeleeTank1" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -12,14 +15,13 @@ scale = Vector2( 1.23118, 1.2248 )
 texture = ExtResource( 1 )
 region_rect = Rect2( 1, 64, 61.73, 62.1257 )
 
-[node name="M_T_1_Hitbox2" type="CollisionPolygon2D" parent="."]
-position = Vector2( -335.186, 391.5 )
-polygon = PoolVector2Array( 298.01, -392, 309.122, -398, 324.275, -403, 329.326, -418, 335.387, -430, 341.448, -418, 345.489, -403, 361.652, -398, 372.765, -392, 361.652, -386, 346.499, -382, 342.458, -369, 335.387, -355, 328.316, -369, 324.275, -382, 310.132, -387 )
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 position = Vector2( 0, -1.5 )
 
-[node name="M_T_1_Hitbox" type="CollisionPolygon2D" parent="Area2D"]
+[node name="M_T_1_Hitbox" type="CollisionPolygon2D" parent="Hitbox"]
 position = Vector2( -335.186, 393 )
 polygon = PoolVector2Array( 298.01, -392, 309.122, -398, 324.275, -403, 329.326, -418, 335.387, -430, 341.448, -418, 345.489, -403, 361.652, -398, 372.765, -392, 361.652, -386, 346.499, -382, 342.458, -369, 335.387, -355, 328.316, -369, 324.275, -382, 310.132, -387 )
 

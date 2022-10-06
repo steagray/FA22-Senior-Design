@@ -17,8 +17,14 @@ margin_top = 439.0
 margin_right = 1308.0
 margin_bottom = 480.0
 
-[node name="MeleeTank1" parent="." instance=ExtResource( 3 )]
+[node name="MeleeTank2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 735, 778 )
+
+[node name="MeleeTank1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1474, 194 )
 
 [node name="KinematicPlayer2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 896, 893 )
+
+[node name="MeleeTank3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 228, 127 )

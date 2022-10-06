@@ -7,10 +7,13 @@ var velocity
 var isAggro
 var player
 
+signal playerCollide
+
 func _ready():
 	_on_BehaviorTimer_timeout()
 	player = get_tree().root.get_node("Node2D/KinematicPlayer2D")
 	velocity = Vector2.ZERO
+	self.connect("playerCollide", player, "takedmg")
 
 # Called when the node is about to leave SceneTree upon freeing or scene changing
 func _exit_tree():
@@ -19,7 +22,9 @@ func _exit_tree():
 func _process(delta):
 	move_and_slide(velocity)
 	if get_slide_count() != 0:
-		move_and_slide(Vector2(velocity.y, velocity.x))
+		if get_slide_collision(get_slide_count() - 1).collider_id == player.get_instance_id():
+			print("PLAYER " + str(get_slide_count()))
+			move_and_slide(Vector2(velocity.y, velocity.x))
 
 # Function call for taking damage. Removes sprite from scene when killed
 func takedmg():
@@ -53,8 +58,6 @@ func _on_MovementTimer_timeout():
 			velocity = Vector2(0, speed * disty / abs(disty))
 		else:
 			velocity = Vector2(0, speed * disty / abs(disty))
-		# 2d math
-		pass
 	else:
 		match (randi() % 5):
 			0: 
@@ -67,5 +70,3 @@ func _on_MovementTimer_timeout():
 				velocity = Vector2.LEFT * speed
 			4:
 				velocity = Vector2.RIGHT * speed
-			
-		pass
