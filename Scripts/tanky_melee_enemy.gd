@@ -33,11 +33,6 @@ func takedmg():
 	if enemy_health <= 0:
 		queue_free()
 
-
-func _on_Button_pressed():
-	takedmg();
-
-
 func _on_BehaviorTimer_timeout():
 	randomize()
 	isAggro = randi() % 2

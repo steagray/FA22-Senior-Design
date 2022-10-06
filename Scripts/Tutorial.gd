@@ -11,6 +11,7 @@ func _enter_tree():
 	for i in range(1,4):
 		get_node("MeleeTank" + str(i)).speed = 250
 		get_node("MeleeTank" + str(i)).setAggro(0)
+	
 	# Creates a random permutation of the values 1-4 in an array that will define the order elements are offered
 	randomize()
 	while elemOrder.size() < 4:
@@ -24,6 +25,7 @@ func _on_OverworldLoad_body_entered(body):
 		#TODO: stage transition
 		get_tree().change_scene("res://Scenes/Overworld.tscn")
 		return
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
