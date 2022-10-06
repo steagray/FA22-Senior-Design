@@ -9,10 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "EditorVCSInterface",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://addons/godot-git-plugin/git_api.gdns"
+"base": "KinematicBody2D",
+"class": "player",
+"language": "GDScript",
+"path": "res://Scripts/Player.gd"
 }, {
 "base": "Node",
 "class": "spell",
@@ -20,7 +20,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/spell.gd"
 } ]
 _global_script_class_icons={
-"GitAPI": "",
+"player": "",
 "spell": ""
 }
 
