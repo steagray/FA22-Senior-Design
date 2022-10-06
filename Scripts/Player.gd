@@ -3,12 +3,15 @@ extends KinematicBody2D
 
 
 # Declare member variables here.
-
+var invulnTimer : Timer
 
 signal onDamage
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	invulnTimer = Timer.new()
+	invulnTimer.one_shot = true
+	self.add_child(invulnTimer)
 	# Set up Player UI
 	var UI = load("res://Scenes/UI.tscn").instance()
 	
@@ -21,15 +24,12 @@ func _exit_tree():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	# Cooldown timer
 	if spellone.currCD > 0:
 		spellone.currCD -= delta
 	if spelltwo.currCD > 0:
 		spelltwo.currCD -= delta
-	# Damage Immunity Cooldown
-	#if damageCooldown > 0:
-	#	damageCooldown -= delta
 	
 	# Movement handling
 	if stats.canMove:
@@ -61,22 +61,12 @@ func _input(event):
 	$PlayerCam.rotation_degrees = 360 - rotation_degrees
 
 func takedmg():
-	print("Ow!")
-	stats.health -= 1
-	emit_signal("onDamage")
-	if stats.health == 0:
-		print("I am die, thank you 4eva")
-		stats.canMove = false
-
-func _on_Button_pressed():
-	takedmg()
-	if stats.health < 0:
-		stats.canMove = true
-		stats.health = 4
+	# Invulnerability timer
+	if not invulnTimer.time_left > 0:
+		print("Ow!")
+		stats.health -= 1
 		emit_signal("onDamage")
-		print("RESPAWN")
-
-
-func _on_Area2D_body_entered(body):
-	if body.get_instance_id() == $KinematicPlayer2D.get_instance_id():
-		takedmg()
+		invulnTimer.start(2)
+		if stats.health == 0:
+			print("I am die, thank you 4eva")
+			stats.canMove = false

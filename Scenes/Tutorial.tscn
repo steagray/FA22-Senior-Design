@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/MeleeTank1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/TutorailTilesetTest.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Tutorial.gd" type="Script" id=5]
 
@@ -87,5 +88,14 @@ position = Vector2( 0, -4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldLoad"]
 position = Vector2( 6658.25, 170.5 )
 shape = SubResource( 7 )
+
+[node name="MeleeTank1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4377, -128 )
+
+[node name="MeleeTank3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4586, 791 )
+
+[node name="MeleeTank2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 5102, 109 )
 
 [connection signal="body_entered" from="OverworldLoad" to="." method="_on_OverworldLoad_body_entered"]

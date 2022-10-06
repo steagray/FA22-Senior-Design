@@ -8,6 +8,8 @@ var elemOrder = []
 
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
+	for i in range(1,3):
+		get_node("MeleeTank" + str(i)).speed = 250
 	# Creates a random permutation of the values 1-4 in an array that will define the order elements are offered
 	randomize()
 	while elemOrder.size() < 4:

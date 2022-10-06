@@ -23,7 +23,8 @@ func _process(delta):
 	move_and_slide(velocity)
 	if get_slide_count() != 0:
 		if get_slide_collision(get_slide_count() - 1).collider_id == player.get_instance_id():
-			print("PLAYER " + str(get_slide_count()))
+			emit_signal("playerCollide")
+		else:
 			move_and_slide(Vector2(velocity.y, velocity.x))
 
 # Function call for taking damage. Removes sprite from scene when killed
@@ -31,7 +32,6 @@ func takedmg():
 	enemy_health -= 1
 	if enemy_health <= 0:
 		queue_free()
-		print("Tango Down")
 
 
 func _on_Button_pressed():
@@ -46,6 +46,11 @@ func _on_BehaviorTimer_timeout():
 	else:
 		$MovementTimer.wait_time = 1
 
+
+func setAggro(x):
+	yield($BehaviorTimer, "timeout")
+	$BehaviorTimer.stop()
+	isAggro = x
 
 func _on_MovementTimer_timeout():
 	var distx = player.position.x - self.position.x # if neg, left of. if pos, right of
