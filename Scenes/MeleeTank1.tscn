@@ -7,6 +7,7 @@
 radius = 37.0
 
 [node name="MeleeTank1" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -20,6 +21,7 @@ shape = SubResource( 1 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2( 0, -1.5 )
+collision_layer = 2
 
 [node name="M_T_1_Hitbox" type="CollisionPolygon2D" parent="Hitbox"]
 position = Vector2( -335.186, 393 )

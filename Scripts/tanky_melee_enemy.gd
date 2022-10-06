@@ -19,7 +19,7 @@ func _ready():
 func _exit_tree():
 	pass
 
-func _process(delta):
+func _physics_process(delta):
 	move_and_slide(velocity)
 	if get_slide_count() != 0:
 		if get_slide_collision(get_slide_count() - 1).collider_id == player.get_instance_id():
