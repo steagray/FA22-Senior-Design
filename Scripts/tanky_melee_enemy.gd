@@ -8,6 +8,7 @@ var isAggro = 0
 var player
 
 signal playerCollide
+signal death
 
 func _ready():
 	player = get_tree().root.get_node("Node2D/KinematicPlayer2D")
@@ -16,7 +17,8 @@ func _ready():
 
 # Called when the node is about to leave SceneTree upon freeing or scene changing
 func _exit_tree():
-	pass
+	emit_signal("death")
+
 
 func _physics_process(delta):
 	move_and_slide(velocity)

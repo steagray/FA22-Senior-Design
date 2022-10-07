@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Screen Saver.mp3-ba15d6bdf8f5c92a36927f5cc0ce80a8.mp3str"
+
+[deps]
+
+source_file="res://Music/Screen Saver.mp3"
+dest_files=[ "res://.import/Screen Saver.mp3-ba15d6bdf8f5c92a36927f5cc0ce80a8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

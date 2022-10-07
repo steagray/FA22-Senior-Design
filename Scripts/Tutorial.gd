@@ -5,6 +5,7 @@ extends Node2D
 var firstElem = false # Checks whether user grabbed the first element yet
 var secondElem = false # Checks whether user grabbed the second element yet
 var elemOrder = []
+var enemiesLeft = 3
 
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
@@ -26,8 +27,10 @@ func _on_OverworldLoad_body_entered(body):
 		get_tree().change_scene("res://Scenes/Overworld.tscn")
 		return
 
+func openDoor():
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+func _on_EnemyDeath():
+	enemiesLeft -= 1
+	if enemiesLeft == 0:
+		openDoor()
