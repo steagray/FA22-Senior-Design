@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="CSCI495Proj"
-run/main_scene="res://Scenes/Tutorial.tscn"
+run/main_scene="res://Scenes/Enemy Test Scene.tscn"
 boot_splash/show_image=false
 config/icon="res://icon.png"
 

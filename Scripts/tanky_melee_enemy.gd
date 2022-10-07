@@ -4,13 +4,12 @@ var enemy_health = 2
 var attack_cooldown = 2
 var speed = 500
 var velocity
-var isAggro
+var isAggro = 0
 var player
 
 signal playerCollide
 
 func _ready():
-	_on_BehaviorTimer_timeout()
 	player = get_tree().root.get_node("Node2D/KinematicPlayer2D")
 	velocity = Vector2.ZERO
 	self.connect("playerCollide", player, "takedmg")
@@ -27,24 +26,13 @@ func _physics_process(delta):
 		else:
 			move_and_slide(Vector2(velocity.y, velocity.x))
 
-# Function call for taking damage. Removes sprite from scene when killed
+# Function call for taking damage. Removes instance from tree when health reaches 0
 func takedmg():
 	enemy_health -= 1
 	if enemy_health <= 0:
 		queue_free()
 
-func _on_BehaviorTimer_timeout():
-	randomize()
-	isAggro = randi() % 2
-	if isAggro:
-		$MovementTimer.wait_time = 0.25
-	else:
-		$MovementTimer.wait_time = 1
-
-
 func setAggro(x):
-	yield($BehaviorTimer, "timeout")
-	$BehaviorTimer.stop()
 	isAggro = x
 
 func _on_MovementTimer_timeout():
@@ -70,3 +58,12 @@ func _on_MovementTimer_timeout():
 				velocity = Vector2.LEFT * speed
 			4:
 				velocity = Vector2.RIGHT * speed
+
+
+func _on_PlayerEnter(body):
+	if body.get_instance_id() == player.get_instance_id():
+		setAggro(1)
+
+func _on_PlayerExit(body):
+	if body.get_instance_id() == player.get_instance_id():
+		setAggro(0)

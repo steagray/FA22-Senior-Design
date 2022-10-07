@@ -18,23 +18,7 @@ func castSpell():
 		return
 	stats.canMove = false
 	# create projectile
-	var projectile = Area2D.new()
-	projectile.add_child(CollisionShape2D.new())
-	projectile.get_child(0).shape = RectangleShape2D.new()
-	projectile.get_child(0).shape.extents.x = 30
-	projectile.get_child(0).shape.extents.y = 30
-	projectile.collision_layer = 10
-	projectile.add_child(Sprite.new())
-	var sprimg = Image.new()
-	sprimg.load("res://Icon.png")
-	projectile.get_child(1).texture = ImageTexture.new().create_from_image(sprimg)
-	print(projectile)
-	print(projectile.get_child(0))
-	print(projectile.get_child(1))
-	print(projectile.position)
-	print(get_tree().root.get_node("KinematicPlayer2D").position)
-	projectile.position = get_tree().root.get_node("KinematicPlayer2D").position
-	projectile.visible = true
+	
 	
 	yield(get_tree().create_timer(stats.castTimer_MAX), "timeout")
 	stats.canMove = true
