@@ -6,6 +6,5 @@
 [node name="Main" type="Node2D"]
 
 [node name="KinematicPlayer2D" parent="." instance=ExtResource( 1 )]
-Fire_Projectile = null
 
 [node name="Fire_Projectile" parent="." instance=ExtResource( 2 )]

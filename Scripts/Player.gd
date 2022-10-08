@@ -1,11 +1,8 @@
 extends KinematicBody2D
 class_name player
 
-export (PackedScene) var Fire_Projectile
-
-onready var SpellOrigin = $SpellOrigin
-
 signal onDamage
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,12 +45,9 @@ func _process(delta):
 		$PlayerCam.rotation_degrees = 360 - rotation_degrees
 
 func _input(event):
-	# Spell Casting
+	# Spell Casting	
 	if event.is_action_pressed("spell_one") and spellone.active:
-		var instance_one = Fire_Projectile.instance()
-		add_child(instance_one)
-		instance_one.global_position = SpellOrigin.global_position
-		spellone.castSpell(rotation_degrees)
+		spellone.castSpell()
 		
 	if event.is_action_pressed("spell_two") and spelltwo.active:
 		spelltwo.castSpell()
