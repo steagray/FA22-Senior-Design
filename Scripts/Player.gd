@@ -8,10 +8,11 @@ signal onDamage
 func _ready():
 	# Set up Player UI
 	var UI = load("res://Scenes/UI.tscn").instance()
+	$PlayerCam.add_child(UI)
 	
 	self.connect("onDamage", UI.get_node("HealthBar"), "on_onDamage")
-	var Player = load("res://Scenes/Player.tscn")
-	$PlayerCam.add_child(UI)
+	UI.get_node("SpellOneCDBar").setObj($spellone)
+	UI.get_node("SpellTwoCDBar").setObj($spelltwo)
 
 # Called when the node is about to leave SceneTree upon freeing or scene changing
 func _exit_tree():
@@ -20,10 +21,10 @@ func _exit_tree():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# Cooldown timer
-	if spellone.currCD > 0:
-		spellone.currCD -= delta
-	if spelltwo.currCD > 0:
-		spelltwo.currCD -= delta
+	if $spellone.currCD > 0:
+		$spellone.currCD -= delta
+	if $spelltwo.currCD > 0:
+		$spelltwo.currCD -= delta
 	# Damage Immunity Cooldown
 	#if damageCooldown > 0:
 	#	damageCooldown -= delta
@@ -46,11 +47,10 @@ func _process(delta):
 
 func _input(event):
 	# Spell Casting	
-	if event.is_action_pressed("spell_one") and spellone.active:
-		spellone.castSpell()
-		
-	if event.is_action_pressed("spell_two") and spelltwo.active:
-		spelltwo.castSpell()
+	if event.is_action_pressed("spell_one") and $spellone.active:
+		$spellone.castSpell()
+	if event.is_action_pressed("spell_two") and $spelltwo.active:
+		$spelltwo.castSpell()
 
 func takedmg():
 	print("Ow!")

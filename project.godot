@@ -28,8 +28,6 @@ config/icon="res://icon.png"
 [autoload]
 
 stats="*res://Scripts/playerstats.gd"
-spellone="*res://Scripts/spellone.gd"
-spelltwo="*res://Scripts/spelltwo.gd"
 
 [display]
 
