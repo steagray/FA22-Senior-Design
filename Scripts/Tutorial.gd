@@ -27,10 +27,8 @@ func _on_OverworldLoad_body_entered(body):
 		get_tree().change_scene("res://Scenes/Overworld.tscn")
 		return
 
-func openDoor():
-	pass
-
 func _on_EnemyDeath():
 	enemiesLeft -= 1
 	if enemiesLeft == 0:
-		openDoor()
+		for i in range(68, 71):
+			$TileMap.set_cell(i, 11, 1)
