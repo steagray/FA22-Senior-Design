@@ -18,6 +18,8 @@ func castSpell():
 		return
 	stats.canMove = false
 	# create projectile
+	
+	
 	yield(get_tree().create_timer(stats.castTimer_MAX), "timeout")
 	stats.canMove = true
 	currCD = maxCD

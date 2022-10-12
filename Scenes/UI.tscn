@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/UI_spellbar_spellone.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/UI_spellbar_spelltwo.gd" type="Script" id=2]
 [ext_resource path="res://Assets/healthbar2_stretched.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/UI_healthbar.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Revive.gd" type="Script" id=5]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -41,3 +42,12 @@ max_value = 4.0
 value = 4.0
 texture_progress = ExtResource( 3 )
 script = ExtResource( 4 )
+
+[node name="ReviveButton" type="Button" parent="."]
+margin_left = 30.0
+margin_top = -12.0
+margin_right = 258.0
+margin_bottom = 8.0
+script = ExtResource( 5 )
+
+[connection signal="pressed" from="ReviveButton" to="HealthBar" method="on_onDamage"]
