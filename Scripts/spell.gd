@@ -7,7 +7,7 @@ enum elem {FIRE, WATER, EARTH, AIR}
 var element = elem.FIRE
 var maxCD = 5
 var currCD = 0
-var active = true
+var active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
