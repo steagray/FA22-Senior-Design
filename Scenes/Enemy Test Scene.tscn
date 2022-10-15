@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://dungeon_floor_and_wall.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/MeleeTank1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/RangedUnit1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Enemy Test Scene.gd" type="Script" id=5]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 824, 616, 386, 927, 346, 931, 336, 313, 499, 316, 567, 325, 1294, 70, 1651, 67, 1647, 294, 1390, 294, 1294, 268, 69, 306, 69, 65, 442, 65, 443, 260, 1382, 611, 1225, 326, 497, 261, 1227, 270, 809, 964, 405, 982, 585, 265, 1139, 260, 1145, 314 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 6, 7, 8, 9, 10 ), PoolIntArray( 3, 11, 12, 13, 14 ), PoolIntArray( 9, 15, 0, 16 ), PoolIntArray( 14, 17, 4, 3 ), PoolIntArray( 16, 18, 10, 9 ), PoolIntArray( 0, 19, 20, 1 ), PoolIntArray( 5, 21, 22, 23, 0 ), PoolIntArray( 0, 23, 16 ) ]
+outlines = [ PoolVector2Array( 69, 65, 442, 65, 443, 260, 497, 261, 499, 316, 567, 325, 585, 265, 1139, 260, 1145, 314, 1225, 326, 1227, 270, 1294, 268, 1294, 70, 1651, 67, 1647, 294, 1390, 294, 1382, 611, 824, 616, 809, 964, 405, 982, 386, 927, 346, 931, 336, 313, 69, 306 ) ]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -28,3 +33,6 @@ position = Vector2( 228, 127 )
 
 [node name="RangedUnit1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 577, 345 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+navpoly = SubResource( 1 )

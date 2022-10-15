@@ -21,6 +21,8 @@ func _exit_tree():
 
 
 func _physics_process(delta):
+	
+	return
 	move_and_slide(velocity)
 	if get_slide_count() != 0:
 		if get_slide_collision(get_slide_count() - 1).collider_id == player.get_instance_id():
@@ -38,6 +40,7 @@ func setAggro(x):
 	isAggro = x
 
 func _on_MovementTimer_timeout():
+	return
 	var distx = player.position.x - self.position.x # if neg, left of. if pos, right of
 	var disty = player.position.y - self.position.y # if neg, above. if pos, below
 	
