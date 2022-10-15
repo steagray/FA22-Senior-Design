@@ -1,6 +1,9 @@
 extends KinematicBody2D
 class_name player
 
+# Used for spell casting
+const projectilePath = preload('res://Scenes/Fire_Projectile.tscn')
+
 signal onDamage
 
 
@@ -47,10 +50,40 @@ func _process(delta):
 func _input(event):
 	# Spell Casting	
 	if event.is_action_pressed("spell_one") and spellone.active:
-		spellone.castSpell()
+		# Create an instance
+		var projectile = projectilePath.instance()
 		
+		# Add to the player tree
+		get_parent().add_child(projectile)
+		
+		# Put the projectile at a global position
+		# So it doesn't follow the player
+		projectile.position = $SpellOrigin.global_position
+		projectile.rotation = $SpellOrigin.global_rotation
+		
+		# We want to prepare velocity for shooting
+		# AKA what direction is this going
+		var velocity
+		match self.rotation_degrees:
+			float(0):
+				# Up
+				velocity = Vector2(0, -1)
+			float(180):
+				# Down
+				Vector2(0, 1)
+			float(90):
+				# Right
+				Vector2(1, 0)
+			float(270):
+				# Left
+				Vector2(-1, 0)
+
+		spellone.castSpell(velocity)
+
 	if event.is_action_pressed("spell_two") and spelltwo.active:
-		spelltwo.castSpell()
+		var velocity
+		
+		spelltwo.castSpell(velocity)
 
 func takedmg():
 	print("Ow!")

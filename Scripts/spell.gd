@@ -1,6 +1,4 @@
-extends Node
-
-var fire_proj = load("res://Scenes/Fire_Projectile.tscn")
+extends KinematicBody2D
 
 enum elem {FIRE, WATER, EARTH, AIR}
 
@@ -10,23 +8,25 @@ var maxCD = 5
 var currCD = 0
 var active = true
 var speed = 20
+var velocity = Vector2(0, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _physics_process(delta):
+	
+	pass
+	# var collision_info = move_and_collide(velocity * delta * speed)
 
-func castSpell():
+func castSpell(vel):
 	if currCD > 0:
 		return
 	stats.canMove = false
-	# Make Projectile
-	var proj_instance = fire_proj.instance()
-	add_child(proj_instance)
-	#proj_instance.global_position = spellOrigin.global_postion
+	# The bullet was instanced in the player script
+	# We just need to tell it where to go
+	velocity = vel
 	# Remove Projectile
 	yield(get_tree().create_timer(stats.castTimer_MAX), "timeout")
 	stats.canMove = true
