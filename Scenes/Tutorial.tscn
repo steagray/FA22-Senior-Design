@@ -135,7 +135,7 @@ autoplay = true
 [node name="Choice1" type="Node2D" parent="."]
 position = Vector2( 2153, 167 )
 
-[node name="Podium1" type="KinematicBody2D" parent="Choice1"]
+[node name="Podium1" type="Area2D" parent="Choice1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Choice1/Podium1"]
 position = Vector2( -229.25, -0.25 )
@@ -144,7 +144,7 @@ shape = SubResource( 9 )
 [node name="Sprite" type="Sprite" parent="Choice1/Podium1"]
 position = Vector2( -230, 0 )
 
-[node name="Podium2" type="KinematicBody2D" parent="Choice1"]
+[node name="Podium2" type="Area2D" parent="Choice1"]
 position = Vector2( 436, 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Choice1/Podium2"]
@@ -157,7 +157,7 @@ position = Vector2( -90, -20 )
 [node name="Choice2" type="Node2D" parent="."]
 position = Vector2( 6632, 2023 )
 
-[node name="Podium1" type="KinematicBody2D" parent="Choice2"]
+[node name="Podium1" type="Area2D" parent="Choice2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Choice2/Podium1"]
 position = Vector2( -229.25, -0.25 )
@@ -166,7 +166,7 @@ shape = SubResource( 9 )
 [node name="Sprite" type="Sprite" parent="Choice2/Podium1"]
 position = Vector2( -230, 0 )
 
-[node name="Podium2" type="KinematicBody2D" parent="Choice2"]
+[node name="Podium2" type="Area2D" parent="Choice2"]
 position = Vector2( 436, 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Choice2/Podium2"]

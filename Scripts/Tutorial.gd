@@ -19,8 +19,9 @@ func _enter_tree():
 		var ele = randi() % 4
 		if elemOrder.find(ele) == -1:
 			elemOrder.append(ele)
-			
+	
 	# spawn 4 items
+	
 
 func _on_OverworldLoad_body_entered(body):
 	if body.get_instance_id() == $KinematicPlayer2D.get_instance_id():
