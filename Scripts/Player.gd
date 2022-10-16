@@ -63,27 +63,13 @@ func _input(event):
 		
 		# We want to prepare velocity for shooting
 		# AKA what direction is this going
-		var velocity
-		match self.rotation_degrees:
-			float(0):
-				# Up
-				velocity = Vector2(0, -1)
-			float(180):
-				# Down
-				Vector2(0, 1)
-			float(90):
-				# Right
-				Vector2(1, 0)
-			float(270):
-				# Left
-				Vector2(-1, 0)
 
-		spellone.castSpell(velocity)
+		spellone.castSpell()
 
 	if event.is_action_pressed("spell_two") and spelltwo.active:
 		var velocity
 		
-		spelltwo.castSpell(velocity)
+		spelltwo.castSpell()
 
 func takedmg():
 	print("Ow!")
