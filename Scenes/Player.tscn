@@ -22,6 +22,7 @@ scale = Vector2( 0.251859, 0.417382 )
 texture = ExtResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
+z_index = -1
 occluder = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
