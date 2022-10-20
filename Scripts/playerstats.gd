@@ -1,6 +1,5 @@
 extends Node
 
-
 # Declare member variables here.
 var speed = 10
 var maxHP = 4

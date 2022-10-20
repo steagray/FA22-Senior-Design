@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "spell",
 "language": "GDScript",
-"path": "res://Scripts/spell.gd"
+"path": "res://Scripts/Player.gd"
 } ]
 _global_script_class_icons={
 "spell": ""
