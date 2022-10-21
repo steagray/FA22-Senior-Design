@@ -10,6 +10,12 @@ var active = true
 var speed = 300
 var projLoader
 
+func _body_entered(body):
+	print("Collision")
+	if body.has_method("takedmg"):
+		body.takedmg()
+	queue_free()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +32,8 @@ func castSpell(caster):
 	if currCD > 0:
 		return
 	
+	currCD = maxCD
+	
 	# Create an instance
 	var projectile = projLoader.instance()
 	
@@ -41,12 +49,11 @@ func castSpell(caster):
 	# AKA what direction is this going
 		
 	stats.canMove = false
-	# create projectile
-	
 	
 	yield(get_tree().create_timer(stats.castTimer_MAX), "timeout")
 	stats.canMove = true
-	currCD = maxCD
 	
 	yield(get_tree().create_timer(3), "timeout")
 	projectile.queue_free()
+
+
