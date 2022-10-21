@@ -4,18 +4,16 @@ enum elem {FIRE, WATER, EARTH, AIR}
 
 # Declare member variables here.
 var element
-var maxCD = 5
+var maxCD = 4
 var currCD = 0
 var active = true
-var speed = 300
+var speed = 700
 var projLoader
 
 func _body_entered(body):
-	print("Collision")
 	if body.has_method("takedmg"):
 		body.takedmg()
 	queue_free()
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,8 +40,8 @@ func castSpell(caster):
 	
 	# Put the projectile at a global position
 	# So it doesn't follow the player
-	projectile.position = caster.global_position
-	projectile.rotation = caster.global_rotation
+	projectile.position = caster.get_node("SpellOrigin").global_position
+	projectile.rotation = caster.get_node("SpellOrigin").global_rotation
 	
 	# We want to prepare velocity for shooting
 	# AKA what direction is this going
@@ -52,8 +50,5 @@ func castSpell(caster):
 	
 	yield(get_tree().create_timer(stats.castTimer_MAX), "timeout")
 	stats.canMove = true
-	
-	yield(get_tree().create_timer(3), "timeout")
-	projectile.queue_free()
 
 
