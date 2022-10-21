@@ -33,6 +33,7 @@ func _ready():
 
 func DoorTrigger(body):
 	var x = 15 #the x value of our door
+	activate_plate_paricles(12,4)
 	BreakDoorParticles.emitting = true
 	for i in range(1, 7):
 		#i is the y value of our cell
