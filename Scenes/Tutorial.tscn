@@ -122,15 +122,8 @@ position = Vector2( 5102, 109 )
 [node name="MeleeTank3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 4586, 791 )
 
-[node name="Button" type="Button" parent="."]
-margin_left = 4947.0
-margin_top = 1364.0
-margin_right = 4990.0
-margin_bottom = 1421.0
-
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-autoplay = true
 
 [node name="Choice1" type="Node2D" parent="."]
 position = Vector2( 2153, 167 )
@@ -180,4 +173,3 @@ position = Vector2( -90, -20 )
 [connection signal="death" from="MeleeTank1" to="." method="_on_EnemyDeath"]
 [connection signal="death" from="MeleeTank2" to="." method="_on_EnemyDeath"]
 [connection signal="death" from="MeleeTank3" to="." method="_on_EnemyDeath"]
-[connection signal="pressed" from="Button" to="." method="_on_EnemyDeath"]

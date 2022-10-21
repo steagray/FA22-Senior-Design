@@ -8,16 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Node",
-"class": "spell",
-"language": "GDScript",
-"path": "res://Scripts/spell.gd"
-} ]
-_global_script_class_icons={
-"spell": ""
-}
-
 [application]
 
 config/name="CSCI495Proj"
