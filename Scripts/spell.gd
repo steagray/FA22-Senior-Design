@@ -37,7 +37,7 @@ func castSpell(caster):
 	# Create an instance
 	var projectile = projLoader.instance()
 	
-	# Add to the player tree
+	# Add to the root tree
 	get_parent().add_child(projectile)
 	
 	# Put the projectile at a global position
