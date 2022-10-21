@@ -9,7 +9,11 @@ var enemiesLeft = 3
 
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
+	spellone.active = false
+	spelltwo.active = false
+	
 	for i in range(1,4):
+		get_node("MeleeTank" + str(i)).health = 1
 		get_node("MeleeTank" + str(i)).speed = 250
 		get_node("MeleeTank" + str(i)).setAggro(0)
 	

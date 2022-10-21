@@ -26,10 +26,12 @@ func changeProj(proj):
 func _physics_process(delta):
 	move_local_y(delta * (-speed))
 
+func changeSpeed(spd):
+	speed = spd
+
 func castSpell(caster):
 	if currCD > 0:
 		return
-	
 	currCD = maxCD
 	
 	# Create an instance
@@ -47,7 +49,6 @@ func castSpell(caster):
 	# AKA what direction is this going
 		
 	stats.canMove = false
-	
 	yield(get_tree().create_timer(stats.castTimer_MAX), "timeout")
 	stats.canMove = true
 
