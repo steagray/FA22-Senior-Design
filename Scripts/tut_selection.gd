@@ -1,9 +1,6 @@
 extends Node2D
 
 
-var optionA
-var optionB
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setOP("Podium1", get_parent().elemOrder.pop_front())
