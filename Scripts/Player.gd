@@ -7,6 +7,7 @@ var invulnTimer : Timer
 
 signal onDamage
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	invulnTimer = Timer.new()
@@ -35,30 +36,24 @@ func _physics_process(delta):
 	if stats.canMove:
 		if Input.is_action_pressed("ui_right"):
 			move_and_collide(Vector2.RIGHT * stats.speed)
+			rotation_degrees = 90
 		if Input.is_action_pressed("ui_down"):
 			move_and_collide(Vector2.DOWN * stats.speed)
+			rotation_degrees = 180
 		if Input.is_action_pressed("ui_up"):
 			move_and_collide(Vector2.UP * stats.speed)
+			rotation_degrees = 0
 		if Input.is_action_pressed("ui_left"):
 			move_and_collide(Vector2.LEFT * stats.speed)
+			rotation_degrees = 270
+		$PlayerCam.rotation_degrees = 360 - rotation_degrees
 
 func _input(event):
-	# Spell Casting
+	# Spell Casting	
 	if event.is_action_pressed("spell_one") and spellone.active:
-		spellone.castSpell()
+		spellone.castSpell(self)
 	if event.is_action_pressed("spell_two") and spelltwo.active:
-		spelltwo.castSpell()
-	
-	# Directional handling
-	if event.is_action_pressed("ui_right"):
-		rotation_degrees = 90
-	if event.is_action_pressed("ui_down"):
-		rotation_degrees = 180
-	if event.is_action_pressed("ui_up"):
-		rotation_degrees = 0
-	if event.is_action_pressed("ui_left"):
-		rotation_degrees = 270
-	$PlayerCam.rotation_degrees = 360 - rotation_degrees
+		spelltwo.castSpell(self)
 
 func takedmg():
 	# Invulnerability timer

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/UI_spellbar_spellone.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/UI_spellbar_spelltwo.gd" type="Script" id=2]
 [ext_resource path="res://Assets/healthbar2_stretched.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/UI_healthbar.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Revive.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/MuteButton.gd" type="Script" id=6]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -49,5 +50,13 @@ margin_top = -12.0
 margin_right = 258.0
 margin_bottom = 8.0
 script = ExtResource( 5 )
+
+[node name="MuteButton" type="CheckBox" parent="."]
+margin_left = 276.0
+margin_top = 24.0
+margin_right = 300.0
+margin_bottom = 48.0
+pressed = true
+script = ExtResource( 6 )
 
 [connection signal="pressed" from="ReviveButton" to="HealthBar" method="on_onDamage"]
