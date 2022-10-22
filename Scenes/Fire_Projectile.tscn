@@ -15,6 +15,7 @@ scale = Vector2( 0.5, 0.8 )
 script = ExtResource( 2 )
 
 [node name="Fire" type="Sprite" parent="."]
+visible = false
 position = Vector2( -2, -14.375 )
 scale = Vector2( 0.625, 0.585937 )
 texture = ExtResource( 1 )
@@ -39,7 +40,6 @@ texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.890197, -6.68247 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="." to="." method="_body_entered"]

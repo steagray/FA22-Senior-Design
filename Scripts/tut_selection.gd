@@ -11,8 +11,8 @@ func _ready():
 	
 	# Dynamically set podium sprite textures based on what is generated from tutorial
 	# Sprite will be found in "res://Assets/ElemSprites/[# generated based on elem]"
-	$Podium1/Sprite.texture 
-	$Podium2/Sprite.texture
+	$Podium1/Sprite.region_rect = Rect2(podiums[0] * 64, 0, 64, 64)
+	$Podium2/Sprite.region_rect = Rect2(podiums[1] * 64, 0, 64, 64)
 
 func select_option(body):
 	var modspell = spellone
@@ -30,7 +30,6 @@ func select_option(body):
 		modspell = spelltwo
 	modspell.active = true
 	modspell.element = podiums[podium]
-	modspell.changeProj(modspell.element)
 	
 	emit_signal("selected")
 	
