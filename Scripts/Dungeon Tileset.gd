@@ -4,11 +4,18 @@ extends TileMap
 var BreakDoorParticles
 var MakeDoorParticles
 var ActivatePlateParticles
+var PlateWaitingParticles
 var Room1Locked = false
 var Room1Locks = [false, false, false]
 var Room2Plates = [false, false, false]
+var Room3WaitPlate = false
+var Room3Timer = false
+var Room3Completed = false
 
 # for erasing tiles with *style*
+func wait(seconds):
+	yield(get_tree().create_timer(seconds), "timeout")
+
 func set_tile(x, y, particles, tileID):
 	set_cell(x, y, tileID)
 	particles.position = map_to_world(Vector2(x, y)) + Vector2(32, 32)
@@ -19,11 +26,55 @@ func activate_plate_paricles(x, y):
 	yield(get_tree().create_timer(0.25), "timeout")
 	ActivatePlateParticles.emitting = false
 # Called when the node enters the scene tree for the first time.
+
+func open_vertical_door(x, startY, endY):
+	BreakDoorParticles.emitting = true
+	for y in range(startY, endY + 1):
+		if get_cell(x, y) != 1:
+			set_tile(x, y, BreakDoorParticles, 1)
+			yield(get_tree().create_timer(0.15), "timeout")
+	BreakDoorParticles.emitting = false
+	
+func close_vertical_door(x, startY, endY):
+	MakeDoorParticles.emitting = true
+	for y in range(startY, endY + 1):
+		if get_cell(x, y) != 0:
+			set_tile(x, y, MakeDoorParticles, 0)
+			yield(get_tree().create_timer(0.15), "timeout")
+	MakeDoorParticles.emitting = false
+	
+func open_horizontal_door(startX, endX, y):
+	BreakDoorParticles.emitting = true
+	for x in range(startX, endX + 1):
+		if get_cell(x, y) != 1:
+			set_tile(x, y, BreakDoorParticles, 1)
+			yield(get_tree().create_timer(0.15), "timeout")
+	BreakDoorParticles.emitting = false
+	
+func close_horizontal_door(startX, endX, y):
+	MakeDoorParticles.emitting = true
+	for x in range(startX, endX + 1):
+		if get_cell(x, y) != 0:
+			set_tile(x, y, MakeDoorParticles, 0)
+			yield(get_tree().create_timer(0.15), "timeout")
+	MakeDoorParticles.emitting = false
+
+func timed_vertical_door(x, startY, endY, time):
+	open_vertical_door(x, startY, endY)
+	yield(get_tree().create_timer(time), "timeout")
+	close_vertical_door(x, startY, endY)
+	
+func timed_horizontal_door(startX, endX, y, time):
+	open_horizontal_door(startX, endX, y)
+	yield(get_tree().create_timer(time), "timeout")
+	close_horizontal_door(startX, endX, y)
+
 func _ready():
 	var particles = get_tree().get_root().get_children()[3].get_children()[4].get_children()
 	BreakDoorParticles = particles[0]
 	MakeDoorParticles = particles[1]
 	ActivatePlateParticles = particles[2]
+	PlateWaitingParticles = particles[3]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,41 +85,19 @@ func _ready():
 func DoorTrigger(body):
 	var x = 15 #the x value of our door
 	activate_plate_paricles(12,4)
-	BreakDoorParticles.emitting = true
-	for i in range(1, 7):
-		#i is the y value of our cell
-		if get_cell(x, i) != 1:
-			set_tile(x, i, BreakDoorParticles, 1)
-			#print(map_to_world(Vector2(15, i)))
-			yield(get_tree().create_timer(0.15), "timeout")
-	BreakDoorParticles.emitting = false
+	open_vertical_door(x, 1, 6)
 
 func LockRoom1(body):
 	if Room1Locks[0] == false and Room1Locks[1] == false and Room1Locks[2] == false:
-		var x = 27 # the x value of the "lockout door"
-		MakeDoorParticles.emitting = true
-		for i in range(5, 7):
-			if Room1Locked == false and Room1Locks[0] == false:
-				# do stuff
-				set_tile(x, i, MakeDoorParticles, 0)
-				yield(get_tree().create_timer(0.15), "timeout")
-		MakeDoorParticles.emitting = false
+		if Room1Locked == false and Room1Locks[0] == false:
+			close_vertical_door(27, 5, 6)
 		Room1Locked = true
 
 func OpenRoom1(body):
 	# if we can open the door...
 	if Room1Locks[0] == true and Room1Locks[1] == true and Room1Locks[2] == true and Room1Locked == true:
 		activate_plate_paricles(43, 8)
-		var y = 10 # the y value of the "open shit up" door
-		BreakDoorParticles.emitting = true
-		for i in range(41, 45):
-			set_tile(i, y, BreakDoorParticles, 1)
-			yield(get_tree().create_timer(0.15), "timeout")
-		var x = 27
-		for i in range(5, 7):
-			set_tile(x, i, BreakDoorParticles, 1)
-			yield(get_tree().create_timer(0.15), "timeout")
-		BreakDoorParticles.emitting = false
+		open_horizontal_door(41, 44, 10)
 		BreakDoorParticles.position = map_to_world(Vector2(-5000, -5000))
 		Room1Locked = false
 
@@ -89,50 +118,48 @@ func _on_Room1Plate3_body_entered(body):
 
 func LockRoom2(body):
 	if body.get_instance_id() == get_tree().get_root().get_children()[3].get_children()[3].get_instance_id():
-		var y = 10
-		MakeDoorParticles.emitting = true
-		for i in range(41, 45):
-			set_tile(i, y, MakeDoorParticles, 0)
-			yield(get_tree().create_timer(0.15), "timeout")
-		MakeDoorParticles.emitting = false
+		close_horizontal_door(41, 44, 10)
 
 func _on_Room2Plate1_body_entered(body):
 	if Room2Plates[0] == false:
 		Room2Plates[0] = true
 		activate_plate_paricles(30,14)
-		BreakDoorParticles.emitting = true
-		var y = 16
-		for x in range(28, 33):
-			set_tile(x, y, BreakDoorParticles, 1)
-			yield(get_tree().create_timer(0.15), "timeout")
-		BreakDoorParticles.emitting = false
+		open_horizontal_door(28, 32, 16)
 
 func _on_Room2Plate2_body_entered(body):
 	if Room2Plates[1] == false:
 		Room2Plates[1] = true
 		activate_plate_paricles(43, 19)
-		BreakDoorParticles.emitting = true
-		var y = 21
-		for x in range(41, 45):
-			set_tile(x, y, BreakDoorParticles, 1)
-			yield(get_tree().create_timer(0.15), "timeout")
-		BreakDoorParticles.emitting = false
+		open_horizontal_door(41, 44, 21)
 
 func _on_Room2Plate3_body_entered(body):
 	if Room2Plates[2] == false:
 		activate_plate_paricles(43, 25)
-		var x = 27
-		#23 -27
-		BreakDoorParticles.emitting = true
-		for y in range(23, 27):
-			set_tile(x, y, BreakDoorParticles, 1)
-			yield(get_tree().create_timer(0.15), "timeout")
-		BreakDoorParticles.emitting = false
-		
-		yield(get_tree().create_timer(3), "timeout")
-		
-		MakeDoorParticles.emitting = true
-		for y in range(23, 27):
-			set_tile(x, y, MakeDoorParticles, 0)
-			yield(get_tree().create_timer(0.15), "timeout")
-		MakeDoorParticles.emitting = false
+		timed_vertical_door(27, 23, 26, 3)
+
+func _on_OpenRoom3_body_entered(body):
+	if body.get_instance_id() == get_tree().get_root().get_children()[3].get_children()[3].get_instance_id():
+		activate_plate_paricles(21, 15)
+		timed_vertical_door(15, 13, 16, 1)
+
+func _on_WaitPlateTrigger_body_entered(body):
+	if body.get_instance_id() == get_tree().get_root().get_children()[3].get_children()[3].get_instance_id() and Room3WaitPlate == false:
+		PlateWaitingParticles.position = map_to_world(Vector2(9, 15))
+		PlateWaitingParticles.emitting = true
+		Room3Timer = true
+		yield(get_tree().create_timer(5), "timeout")
+		if Room3Timer == true:
+			Room3WaitPlate = true
+			open_horizontal_door(7, 10, 18)
+
+func _on_WaitPlateTrigger_body_exited(body):
+	if body.get_instance_id() == get_tree().get_root().get_children()[3].get_children()[3].get_instance_id():
+		PlateWaitingParticles.position = map_to_world(Vector2(9, 15))
+		PlateWaitingParticles.emitting = false
+		Room3Timer = false
+
+func _on_Room3Plate2_body_entered(body):
+	if body.get_instance_id() == get_tree().get_root().get_children()[3].get_children()[3].get_instance_id() and Room3Completed == false:
+		Room3Completed = true
+		activate_plate_paricles(9,21)
+		open_horizontal_door(8,12,10)
