@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
-var enemy_health = 2
+var health = 2
 var attack_cooldown = 2
 var speed = 500
 var velocity
 var isAggro = 0
 var player
+var inrange : bool = false
 
 signal playerCollide
 signal death
@@ -28,11 +29,14 @@ func _physics_process(delta):
 		else:
 			move_and_slide(Vector2(velocity.y, velocity.x))
 
+func death():
+	queue_free()
+
 # Function call for taking damage. Removes instance from tree when health reaches 0
 func takedmg():
-	enemy_health -= 1
-	if enemy_health <= 0:
-		queue_free()
+	health -= 1
+	if health <= 0:
+		death()
 
 func setAggro(x):
 	isAggro = x
@@ -63,9 +67,13 @@ func _on_MovementTimer_timeout():
 
 
 func _on_PlayerEnter(body):
+	inrange = true
 	if body.get_instance_id() == player.get_instance_id():
 		setAggro(1)
 
 func _on_PlayerExit(body):
+	inrange = false
 	if body.get_instance_id() == player.get_instance_id():
-		setAggro(0)
+		yield(get_tree().create_timer(3), "timeout")
+		if not inrange:
+			setAggro(0)
