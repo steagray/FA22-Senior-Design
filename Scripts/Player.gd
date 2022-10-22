@@ -21,6 +21,7 @@ func _ready():
 	var Player = load("res://Scenes/Player.tscn")
 	$PlayerCam.add_child(UI)
 
+
 # Called when the node is about to leave SceneTree upon freeing or scene changing
 func _exit_tree():
 	pass
@@ -52,13 +53,15 @@ func _physics_process(delta):
 		move_and_slide(velocity.normalized() * 750)
 
 func _input(event):
-	# Spell Casting	
-	if event.is_action_pressed("spell_one") and spellone.active:
-		spellone.castSpell(self)
-	if event.is_action_pressed("spell_two") and spelltwo.active:
-		spelltwo.castSpell(self)
+	# Spell Casting
+	if stats.canMove:
+		if event.is_action_pressed("spell_one") and spellone.active:
+			spellone.castSpell(self)
+		if event.is_action_pressed("spell_two") and spelltwo.active:
+			spelltwo.castSpell(self)
 
 func death():
+	# Account for possible instant death attacks/hazards
 	if stats.health > 0:
 		stats.health = 0
 		emit_signal("onDamage")
@@ -72,7 +75,7 @@ func death():
 
 func takedmg():
 	# Invulnerability timer
-	if not invulnTimer.time_left > 0:
+	if not invulnTimer.time_left > 0 and stats.health > 0:
 		print("Ow!")
 		stats.health -= 1
 		emit_signal("onDamage")

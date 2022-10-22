@@ -7,7 +7,7 @@ var element
 var maxCD = 4
 var currCD = 0
 var active = true
-var speed = 700
+var speed = 900
 var projLoader
 
 func _body_entered(body):
@@ -20,7 +20,11 @@ func _ready():
 	projLoader = load("res://Scenes/Fire_Projectile.tscn")
 
 func changeProj(proj):
-	projLoader = load("res://Scenes/" + proj)
+	print(proj)
+	print(element)
+	
+	#get_node(str(element)).visible = false
+	#get_node(str(proj)).visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

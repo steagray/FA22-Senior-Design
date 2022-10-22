@@ -2,6 +2,8 @@ extends Node2D
 
 var podiums = []
 
+signal selected
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	podiums.append(get_parent().elemOrder.pop_front())
@@ -28,7 +30,10 @@ func select_option(body):
 		modspell = spelltwo
 	modspell.active = true
 	modspell.element = podiums[podium]
-		
+	modspell.changeProj(modspell.element)
+	
+	emit_signal("selected")
+	
 	# Once something is selected, free the podium so only one can be selected
 	queue_free()
 

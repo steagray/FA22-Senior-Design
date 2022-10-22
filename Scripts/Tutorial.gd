@@ -16,6 +16,8 @@ func _enter_tree():
 		get_node("MeleeTank" + str(i)).health = 1
 		get_node("MeleeTank" + str(i)).speed = 250
 		get_node("MeleeTank" + str(i)).setAggro(0)
+		if i == 3:
+			get_node("MeleeTank" + str(i)).queue_free()
 	
 	# Creates a random permutation of the values 1-4 in an array that will define the order elements are offered
 	randomize()
@@ -38,3 +40,13 @@ func _on_EnemyDeath():
 	if enemiesLeft == 0:
 		for i in range(68, 71):
 			$TileMap.set_cell(i, 11, 1)
+
+
+func _first_pick():
+	for i in range(-4, -1):
+		$TileMap.set_cell(38, i, 1)
+
+
+func _second_pick():
+	for i in range(97, 100):
+		$TileMap.set_cell(i, 20, 1)
