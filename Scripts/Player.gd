@@ -58,10 +58,14 @@ func _input(event):
 func takedmg():
 	# Invulnerability timer
 	if not invulnTimer.time_left > 0:
-		print("Ow!")
+		#print("Ow!")
+		$Particles2D.emitting = true
+		$Particles2D.restart()
 		stats.health -= 1
 		emit_signal("onDamage")
 		invulnTimer.start(2)
 		if stats.health == 0:
+			$Particles2D.amount = 500
+			$Particles2D.emitting = true
 			print("I am die, thank you 4eva")
 			stats.canMove = false
