@@ -11,6 +11,7 @@ var Room2Plates = [false, false, false]
 var Room3WaitPlate = false
 var Room3Timer = false
 var Room3Completed = false
+var Room4Plates = [false, false, false, false]
 
 # for erasing tiles with *style*
 func wait(seconds):
@@ -162,4 +163,30 @@ func _on_Room3Plate2_body_entered(body):
 	if body.get_instance_id() == get_tree().get_root().get_children()[3].get_children()[3].get_instance_id() and Room3Completed == false:
 		Room3Completed = true
 		activate_plate_paricles(9,21)
-		open_horizontal_door(8,12,10)
+		open_vertical_door(-3, 16, 20)
+
+
+func _on_Plate1_body_entered(body):
+	if Room4Plates[0] == false:
+		Room4Plates[0] = true
+		activate_plate_paricles(-15,2)
+		open_vertical_door(-58, 20, 23)
+
+
+func _on_Plate2_body_entered(body):
+	if Room4Plates[1] == false:
+		Room4Plates[1] = true
+		activate_plate_paricles(-65,2)
+		open_vertical_door(-61, 20, 23)
+
+func _on_Plate3_body_entered(body):
+	if Room4Plates[2] == false:
+		Room4Plates[2] = true
+		activate_plate_paricles(-61,35)
+		open_vertical_door(-64, 20, 23)
+
+func _on_Plate4_body_entered(body):
+	if Room4Plates[3] == false:
+		Room4Plates[3] = true
+		activate_plate_paricles(-22,38)
+		open_vertical_door(-67, 20, 23)
