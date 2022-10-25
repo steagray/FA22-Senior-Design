@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/floor_light.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 26, 28 )
+extents = Vector2( 18, 28 )
 
 [sub_resource type="Curve" id=2]
 min_value = -360.0
