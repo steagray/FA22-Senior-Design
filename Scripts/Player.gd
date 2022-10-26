@@ -4,6 +4,7 @@ extends KinematicBody2D
 
 # Declare member variables here.
 var invulnTimer : Timer
+var velocity = Vector2.ZERO
 
 signal onDamage
 
@@ -20,6 +21,7 @@ func _ready():
 	var Player = load("res://Scenes/Player.tscn")
 	$PlayerCam.add_child(UI)
 
+
 # Called when the node is about to leave SceneTree upon freeing or scene changing
 func _exit_tree():
 	pass
@@ -33,39 +35,55 @@ func _physics_process(delta):
 		spelltwo.currCD -= delta
 	
 	# Movement handling
+	velocity = Vector2.ZERO
 	if stats.canMove:
 		if Input.is_action_pressed("ui_right"):
-			move_and_collide(Vector2.RIGHT * stats.speed)
+			velocity += Vector2.RIGHT
 			rotation_degrees = 90
 		if Input.is_action_pressed("ui_down"):
-			move_and_collide(Vector2.DOWN * stats.speed)
+			velocity += Vector2.DOWN
 			rotation_degrees = 180
 		if Input.is_action_pressed("ui_up"):
-			move_and_collide(Vector2.UP * stats.speed)
+			velocity += Vector2.UP
 			rotation_degrees = 0
 		if Input.is_action_pressed("ui_left"):
-			move_and_collide(Vector2.LEFT * stats.speed)
+			velocity += Vector2.LEFT
 			rotation_degrees = 270
 		$PlayerCam.rotation_degrees = 360 - rotation_degrees
+		move_and_slide(velocity.normalized() * 750)
 
 func _input(event):
-	# Spell Casting	
-	if event.is_action_pressed("spell_one") and spellone.active:
-		spellone.castSpell(self)
-	if event.is_action_pressed("spell_two") and spelltwo.active:
-		spelltwo.castSpell(self)
+	# Spell Casting
+	if stats.canMove:
+		if event.is_action_pressed("spell_one") and spellone.active:
+			spellone.castSpell(self)
+		if event.is_action_pressed("spell_two") and spelltwo.active:
+			spelltwo.castSpell(self)
+
+func death():
+	# Account for possible instant death attacks/hazards
+	if stats.health > 0:
+		stats.health = 0
+		emit_signal("onDamage")
+	
+	print("I am die, thank you 4eva")
+	stats.canMove = false
+	for i in range(1, 9):
+		rotation_degrees += 90
+		$PlayerCam.rotation_degrees -= 90
+		yield(get_tree().create_timer(0.1), "timeout")
 
 func takedmg():
 	# Invulnerability timer
-	if not invulnTimer.time_left > 0:
+	if not invulnTimer.time_left > 0 and stats.health > 0:
 		#print("Ow!")
 		$Particles2D.emitting = true
 		$Particles2D.restart()
 		stats.health -= 1
 		emit_signal("onDamage")
 		invulnTimer.start(2)
-		if stats.health == 0:
+		if not stats.health > 0:
 			$Particles2D.amount = 500
 			$Particles2D.emitting = true
 			print("I am die, thank you 4eva")
-			stats.canMove = false
+			death()
