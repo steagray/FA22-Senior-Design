@@ -19,7 +19,12 @@ func _ready():
 	
 	self.connect("onDamage", UI.get_node("HealthBar"), "on_onDamage")
 	var Player = load("res://Scenes/Player.tscn")
-	$PlayerCam.add_child(UI)
+	var camera = $PlayerCam
+	#if get_parent().get("camera") != null:
+#		self.remove_child(camera)
+#		get_parent().call_deferred("add_child", camera)
+	camera.add_child(UI)
+	
 
 
 # Called when the node is about to leave SceneTree upon freeing or scene changing
@@ -49,7 +54,8 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_left"):
 			velocity += Vector2.LEFT
 			rotation_degrees = 270
-		$PlayerCam.rotation_degrees = 360 - rotation_degrees
+		if self.has_node("PlayerCam"):
+			$PlayerCam.rotation_degrees = 360 - rotation_degrees
 		move_and_slide(velocity.normalized() * 750)
 
 func _input(event):
