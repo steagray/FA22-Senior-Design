@@ -10,6 +10,8 @@ func _ready():
 	yield(get_tree().create_timer(0.5), "timeout")
 	stats.canMove = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+
+func _on_camTransfer():
+	get_node("PlayerCam").global_position += get_viewport().size * 1.4 / 2
+	#$PlayerCam.global_position = $KinematicPlayer2D.global_position

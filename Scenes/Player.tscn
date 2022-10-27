@@ -63,26 +63,26 @@ zoom = Vector2( 1.4, 1.4 )
 script = ExtResource( 5 )
 
 [node name="Up" type="Area2D" parent="PlayerCam"]
-position = Vector2( 0, -446 )
+position = Vector2( 0, -505 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCam/Up"]
 shape = SubResource( 7 )
 
 [node name="Down" type="Area2D" parent="PlayerCam"]
-position = Vector2( 0, 446 )
+position = Vector2( 0, 505 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCam/Down"]
 shape = SubResource( 8 )
 
 [node name="Left" type="Area2D" parent="PlayerCam"]
-position = Vector2( -752, 0 )
+position = Vector2( -823, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCam/Left"]
 position = Vector2( 7, 0 )
 shape = SubResource( 9 )
 
 [node name="Right" type="Area2D" parent="PlayerCam"]
-position = Vector2( 746, 0 )
+position = Vector2( 823, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCam/Right"]
 shape = SubResource( 10 )

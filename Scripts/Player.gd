@@ -5,8 +5,10 @@ extends KinematicBody2D
 # Declare member variables here.
 var invulnTimer : Timer
 var velocity = Vector2.ZERO
+var noTransfer = true
 
 signal onDamage
+signal camTransfer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,9 +22,10 @@ func _ready():
 	self.connect("onDamage", UI.get_node("HealthBar"), "on_onDamage")
 	var Player = load("res://Scenes/Player.tscn")
 	var camera = $PlayerCam
-	#if get_parent().get("camera") != null:
-#		self.remove_child(camera)
-#		get_parent().call_deferred("add_child", camera)
+	if get_parent().get("camera") != null and not noTransfer:
+		self.remove_child(camera)
+		get_parent().call_deferred("add_child", camera)
+		call_deferred("emit_signal", "camTransfer")
 	camera.add_child(UI)
 	
 
