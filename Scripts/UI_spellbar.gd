@@ -1,4 +1,4 @@
-extends ProgressBar
+extends TextureProgress
 
 
 # Declare member variables here. Examples:
@@ -14,7 +14,19 @@ func setObj(obj):
 	spellobj = obj
 	max_value = spellobj.maxCD
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func setBarColor():
+	var barcolor
+	match spellobj.element:
+		spellobj.elem.FIRE:
+			barcolor = 5
+		spellobj.elem.WATER:
+			barcolor = 1
+		spellobj.elem.EARTH:
+			barcolor = 3
+		spellobj.elem.AIR:
+			barcolor = 2
+	texture_progress = load("res://Assets/UI/PNG/Progress0" + str(barcolor) + ".png")
+
 func _process(delta):
 	if spellobj != null:
 		value = spellobj.currCD

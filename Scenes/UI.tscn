@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/UI_spellbar_spellone.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/UI_spellbar_spelltwo.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Scripts/UI_healthbar.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Revive.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/MuteButton.gd" type="Script" id=6]
+[ext_resource path="res://Assets/UI/PNG/SliderBar_ProgressBar.png" type="Texture" id=7]
+[ext_resource path="res://Assets/UI/PNG/Progress04.png" type="Texture" id=8]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -22,25 +24,6 @@ margin_left = -726.0
 margin_top = -423.0
 margin_right = -542.0
 margin_bottom = -248.0
-
-[node name="SpellOneCDBar" type="ProgressBar" parent="."]
-margin_left = 32.0
-margin_top = 807.0
-margin_right = 120.0
-margin_bottom = 887.0
-rect_rotation = 270.0
-rounded = true
-percent_visible = false
-script = ExtResource( 1 )
-
-[node name="SpellTwoCDBar" type="ProgressBar" parent="."]
-margin_left = 126.0
-margin_top = 807.0
-margin_right = 214.0
-margin_bottom = 887.0
-rect_rotation = 270.0
-percent_visible = false
-script = ExtResource( 2 )
 
 [node name="HealthBar" type="TextureProgress" parent="."]
 light_mask = 512
@@ -68,5 +51,29 @@ margin_right = 300.0
 margin_bottom = 48.0
 pressed = true
 script = ExtResource( 6 )
+
+[node name="SpellOneCD" type="TextureProgress" parent="."]
+margin_left = 53.0
+margin_top = 415.0
+margin_right = 385.0
+margin_bottom = 474.0
+rect_rotation = 90.0
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
+texture_progress_offset = Vector2( -1, -1 )
+fill_mode = 1
+script = ExtResource( 1 )
+
+[node name="SpellTwoCD" type="TextureProgress" parent="."]
+margin_left = 97.0
+margin_top = 415.0
+margin_right = 429.0
+margin_bottom = 474.0
+rect_rotation = 90.0
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
+texture_progress_offset = Vector2( -1, -1 )
+fill_mode = 1
+script = ExtResource( 2 )
 
 [connection signal="pressed" from="ReviveButton" to="HealthBar" method="on_onDamage"]
