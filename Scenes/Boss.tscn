@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/boss_sheet.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/tanky_melee_enemy.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 566.149
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "Spin",
+"speed": 5.0
+} ]
+
+[node name="Boss" type="KinematicBody2D"]
+position = Vector2( 494, 294 )
+scale = Vector2( 2, 2 )
+collision_layer = 2
+collision_mask = 17
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.201538, -0.693024 )
+scale = Vector2( 1.23118, 1.2248 )
+z_index = 1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -18.5, 28.5, -32, -8.5, 1, -32, 33.5, -8, 20, 28.5 )
+
+[node name="MovementTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -1.5 )
+scale = Vector2( 1.54687, 1.56822 )
+frames = SubResource( 3 )
+animation = "Spin"
+playing = true
+
+[connection signal="timeout" from="MovementTimer" to="." method="_on_MovementTimer_timeout"]
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_PlayerEnter"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_PlayerExit"]
