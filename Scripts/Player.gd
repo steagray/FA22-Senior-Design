@@ -22,10 +22,6 @@ func _ready():
 	$PlayerCam.add_child(UI)
 
 
-# Called when the node is about to leave SceneTree upon freeing or scene changing
-func _exit_tree():
-	pass
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	# Cooldown timer
