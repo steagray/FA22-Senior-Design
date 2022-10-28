@@ -105,3 +105,6 @@ tile_data = PoolIntArray( -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 
 
 [node name="KinematicPlayer2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( 698, 356 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.27451, 0.27451, 0.27451, 1 )
