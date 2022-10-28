@@ -13,5 +13,4 @@ func _ready():
 
 
 func _on_camTransfer():
-	get_node("PlayerCam").global_position += get_viewport().size * 1.4 / 2
-	#$PlayerCam.global_position = $KinematicPlayer2D.global_position
+	$PlayerCam.global_position = $KinematicPlayer2D.global_position

@@ -5,7 +5,7 @@ extends KinematicBody2D
 # Declare member variables here.
 var invulnTimer : Timer
 var velocity = Vector2.ZERO
-var noTransfer = true
+var noTransfer = false
 
 signal onDamage
 signal camTransfer
