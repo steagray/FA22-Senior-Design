@@ -3,20 +3,7 @@
 [ext_resource path="res://Assets/player.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Light2D.gd" type="Script" id=3]
-[ext_resource path="res://Assets/floor_light.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/Camera.gd" type="Script" id=5]
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 292, 10 )
-
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 292, 10 )
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 10, 160 )
-
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 10, 160 )
+[ext_resource path="res://Assets/light.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18, 28 )
@@ -99,8 +86,6 @@ position = Vector2( 0, -36 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 4 )
-color = Color( 0.941176, 0.871752, 0.133333, 1 )
-energy = 0.5
 shadow_enabled = true
 script = ExtResource( 3 )
 

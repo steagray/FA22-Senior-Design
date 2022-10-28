@@ -8,8 +8,8 @@ extends Light2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	scale.x = 100
-	scale.y = 100
+	scale.x = 1.4
+	scale.y = 1.4
 	pass # Replace with function body.
 
 
