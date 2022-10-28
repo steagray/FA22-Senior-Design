@@ -79,7 +79,8 @@ func death():
 	stats.canMove = false
 	for i in range(1, 9):
 		rotation_degrees += 90
-		$PlayerCam.rotation_degrees -= 90
+		if self.has_node("PlayerCam"):
+			$PlayerCam.rotation_degrees -= 90
 		yield(get_tree().create_timer(0.1), "timeout")
 
 func takedmg():
