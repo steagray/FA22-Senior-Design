@@ -13,6 +13,7 @@ func _enter_tree():
 func setObj(obj):
 	spellobj = obj
 	max_value = spellobj.maxCD
+	texture_progress = load("res://Assets/UI/PNG/Progress0" + str(spellobj.element + 1) + ".png")
 
 func setBarColor():
 	var barcolor
