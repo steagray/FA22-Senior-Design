@@ -7,7 +7,7 @@ var invulnTimer : Timer
 var velocity = Vector2.ZERO
 
 signal onDamage
-signal onHeal
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +18,6 @@ func _ready():
 	var UI = load("res://Scenes/UI.tscn").instance()
 	
 	self.connect("onDamage", UI.get_node("HealthBar"), "on_onDamage")
-	self.connect("onHeal", UI.get_node("HealthBar"), "on_onHeal")
 	var Player = load("res://Scenes/Player.tscn")
 	$PlayerCam.add_child(UI)
 
@@ -88,15 +87,3 @@ func takedmg():
 			$Particles2D.emitting = true
 			print("I am die, thank you 4eva")
 			death()
-
-
-func heal(amount):
-	if (amount + stats.health) > stats.maxHP:
-		stats.health = stats.maxHP
-	else:
-		stats.health += amount
-	emit_signal("onHeal")
-
-func _on_Reward_body_entered(body):
-	if stats.health < stats.maxHP:
-		heal(2)
