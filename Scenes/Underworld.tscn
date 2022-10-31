@@ -487,14 +487,13 @@ tile_data = PoolIntArray( -7471337, 0, 0, -7471336, 0, 0, -7471335, 0, 0, -74713
 script = ExtResource( 4 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 material = SubResource( 38 )
 z_index = 2
 z_as_relative = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="KinematicPlayer2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( -31, 19 )
+position = Vector2( -1, 2 )
 
 [node name="Particles" type="Node" parent="."]
 
