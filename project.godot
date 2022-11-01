@@ -23,6 +23,8 @@ spelltwo="*res://Scripts/spelltwo.gd"
 
 [display]
 
+window/size/width=1051
+window/size/height=685
 window/stretch/mode="viewport"
 
 [editor]
