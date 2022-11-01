@@ -11,5 +11,4 @@ func _ready():
 
 func _enter_tree():
 	setObj(spellone)
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

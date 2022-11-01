@@ -25,9 +25,6 @@ func _enter_tree():
 		var ele = randi() % 4
 		if elemOrder.find(ele) == -1:
 			elemOrder.append(ele)
-	
-	# spawn 4 items
-	
 
 func _on_OverworldLoad_body_entered(body):
 	if body.get_instance_id() == $KinematicPlayer2D.get_instance_id():
@@ -45,8 +42,10 @@ func _on_EnemyDeath():
 func _first_pick():
 	for i in range(-4, -1):
 		$TileMap.set_cell(38, i, 1)
+	$KinematicPlayer2D/PlayerCam.get_node("Control/SpellOneCD").setBarColor()
 
 
 func _second_pick():
 	for i in range(97, 100):
 		$TileMap.set_cell(i, 20, 1)
+	$KinematicPlayer2D/PlayerCam.get_node("Control/SpellTwoCD").setBarColor()
