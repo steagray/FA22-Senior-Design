@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-var health = 2
+var health = 1
 var attack_cooldown = 2
-var speed = 400
+var speed = 500
 var velocity
 var isAggro = 0
 var player
