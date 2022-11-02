@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/UI_spellbar_spellone.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/UI_spellbar_spelltwo.gd" type="Script" id=2]
 [ext_resource path="res://Assets/healthbar2_stretched.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/UI_healthbar.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/Revive.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/MuteButton.gd" type="Script" id=6]
 [ext_resource path="res://Assets/UI/PNG/SliderBar_ProgressBar.png" type="Texture" id=7]
 [ext_resource path="res://Assets/UI/PNG/Progress04.png" type="Texture" id=8]
@@ -21,15 +20,6 @@ margin_left = -726.0
 margin_top = -423.0
 margin_right = -542.0
 margin_bottom = -248.0
-
-[node name="HealthBar" type="TextureProgress" parent="."]
-light_mask = 512
-material = SubResource( 2 )
-margin_left = 29.0
-margin_top = -50.0
-margin_right = 257.0
-margin_bottom = -30.0
-script = ExtResource( 5 )
 
 [node name="HealthBar" type="TextureProgress" parent="."]
 margin_left = 26.0
@@ -72,5 +62,3 @@ texture_progress = ExtResource( 8 )
 texture_progress_offset = Vector2( -1, -1 )
 fill_mode = 1
 script = ExtResource( 2 )
-
-[connection signal="pressed" from="ReviveButton" to="HealthBar" method="on_onDamage"]
