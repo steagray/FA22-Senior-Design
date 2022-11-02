@@ -2,9 +2,7 @@ extends Node2D
 
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+const camera = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +11,12 @@ func _ready():
 	stats.canMove = true
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+func _on_camTransfer():
+	$PlayerCam.global_position = $KinematicPlayer2D.global_position
+
+
+func _on_trap1(body):
+	for i in range(-22, -1):
+		for j in range(-16, -3):
+			$TileMap.set_cell(i, j, 1)

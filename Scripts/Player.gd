@@ -5,9 +5,12 @@ extends KinematicBody2D
 # Declare member variables here.
 var invulnTimer : Timer
 var velocity = Vector2.ZERO
+var noTransfer = false
 
 signal onDamage
 signal onHeal
+signal camTransfer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,7 +23,13 @@ func _ready():
 	self.connect("onDamage", UI.get_node("HealthBar"), "on_onDamage")
 	self.connect("onHeal", UI.get_node("HealthBar"), "on_onHeal")
 	var Player = load("res://Scenes/Player.tscn")
-	$PlayerCam.add_child(UI)
+	var camera = $PlayerCam
+	if get_parent().get("camera") != null and not noTransfer:
+		self.remove_child(camera)
+		get_parent().call_deferred("add_child", camera)
+		call_deferred("emit_signal", "camTransfer")
+	camera.add_child(UI)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,7 +55,8 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_left"):
 			velocity += Vector2.LEFT
 			rotation_degrees = 270
-		$PlayerCam.rotation_degrees = 360 - rotation_degrees
+		if self.has_node("PlayerCam"):
+			$PlayerCam.rotation_degrees = 360 - rotation_degrees
 		move_and_slide(velocity.normalized() * 750)
 
 func _input(event):
@@ -67,7 +77,8 @@ func death():
 	stats.canMove = false
 	for i in range(1, 9):
 		rotation_degrees += 90
-		$PlayerCam.rotation_degrees -= 90
+		if self.has_node("PlayerCam"):
+			$PlayerCam.rotation_degrees -= 90
 		yield(get_tree().create_timer(0.1), "timeout")
 
 func takedmg():
