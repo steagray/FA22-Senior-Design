@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Underworld_Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/slowfire.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Off-Shoots/RemoveReward.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Off-Shoots/fifftyfifftyfight.gd" type="Script" id=5]
 
@@ -42,6 +43,9 @@ script = ExtResource( 4 )
 [node name="Reward_Collision" type="CollisionShape2D" parent="Switches/Reward"]
 position = Vector2( 52.5, 53 )
 shape = SubResource( 1 )
+
+[node name="RangedUnit1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 310, -395 )
 
 [connection signal="body_entered" from="Switches/Fight" to="Switches/Fight" method="_on_Fight_body_entered"]
 [connection signal="body_exited" from="Switches/Fight" to="Switches/Fight" method="_on_Fight_body_exited"]
