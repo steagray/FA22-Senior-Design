@@ -81,6 +81,10 @@ func death():
 			$PlayerCam.rotation_degrees -= 90
 		yield(get_tree().create_timer(0.1), "timeout")
 
+#This is used for enemy projectile collision, so that enemies don't friendly fire
+func take_dmg():
+	takedmg()
+
 func takedmg():
 	# Invulnerability timer
 	if not invulnTimer.time_left > 0 and stats.health > 0:

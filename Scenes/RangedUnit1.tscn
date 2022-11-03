@@ -33,4 +33,8 @@ shape = SubResource( 2 )
 wait_time = 1.5
 one_shot = true
 
+[node name="SpellOrigin" type="Position2D" parent="."]
+position = Vector2( 30, 0 )
+rotation = 1.5708
+
 [connection signal="body_entered" from="AimingLine" to="." method="_on_AimingLine_body_entered"]

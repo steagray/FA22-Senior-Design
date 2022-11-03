@@ -4,10 +4,13 @@ var velocity = Vector2.ZERO
 var speed = 250
 var player
 var i = 0
+var health = 1
+var bulletLoader
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_tree().root.get_node("Node2D/KinematicPlayer2D")
+	bulletLoader = load("res://Scenes/og_unit_bullet.tscn")
 
 func _physics_process(delta):
 	move_and_slide(velocity)
@@ -37,7 +40,14 @@ func lineUp():
 
 func shoot():
 	$pew.play() # actually needs an SFX
-	print("PEW " + str(i))
+	
+	var bullet = bulletLoader.instance()
+	
+	get_parent().add_child(bullet)
+	
+	bullet.position = get_node("SpellOrigin").global_position
+	bullet.rotation = get_node("SpellOrigin").global_rotation
+	
 	pass
 
 
@@ -48,3 +58,11 @@ func _on_AimingLine_body_entered(body):
 			yield(get_tree().create_timer(1), "timeout")
 			i += 1
 			shoot()
+
+func death():
+	queue_free()
+
+func takedmg():
+	health -= 1
+	if health <= 0:
+		death()

@@ -32,6 +32,7 @@ shape = SubResource( 1 )
 position = Vector2( -159.5, 1075 )
 
 [node name="SpawnTwo" type="Position2D" parent="Switches/Fight/CollisionShape2D"]
+visible = false
 position = Vector2( 364.5, 1088 )
 
 [node name="Reward" type="Area2D" parent="Switches"]

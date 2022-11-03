@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/og_unit_bullet.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/enemy_bullets.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10.5, 17.5 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Bullet" type="Area2D" parent="."]
+scale = Vector2( 0.75, 0.75 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Bullet"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 50.759 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet"]
+position = Vector2( -1, 7 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Bullet" to="Bullet" method="_on_Bullet_body_entered"]
