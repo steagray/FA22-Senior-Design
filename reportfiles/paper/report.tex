@@ -136,8 +136,8 @@
 \numberofauthors{3}
 \author{%
   \alignauthor{James Nail\\
-    \affaddr{City, Country}\\
-    \email{e-mail address}}\\
+    \affaddr{Sharon, USA}\\
+    \email{jamgnail@ut.utm.edu}}\\
   \alignauthor{Logan Brown\\
     \affaddr{City, Country}\\
     \email{e-mail address}}\\
@@ -200,7 +200,7 @@ we wanted a game with magic in it.
 
 Once we had a general idea of what we wanted to use for game-making, we started to iron out details. So, we made an outline of what we wanted in the game.
 
-The first thing we wanted was three different areas that the player could explore; A tutorial, an overworld, and a dungeon. The tutorial are would be, of course,
+The first thing we wanted was three different areas that the player could explore; A tutorial, an overworld, and a dungeon. The tutorial area would be, of course,
 a small place that players could learn in and test controls in. The overworld would be a larger area, in which the player would explore and get into all kinds of
 trouble. The dungeon was to be the final place the player would encounter, and have trials fitting for someone who had made it thus far.
 
@@ -214,21 +214,35 @@ We considered that in the future we could add different, not-so-common types of 
 Finally, we wanted different puzzles and "offshoot" areas that would encourage the player to explore around the maps and really find everything they can. This was
 really from our own experiences as players, making sure that there was plenty to do that was interesting in this game.
 
+\newpage
 
+\section{Inspirations}
+The main inspirations for our game were Thomas Was Alone, Illumine, and Legend of Zelda.  Each contributed a different mechanic, with all three tying together in the end rather nicely.
 
-\section{Inpirations}
-Write about Zelda, Thomas Was Alone, and Illumine here.
+Thomas Was Alone contributed a majority of the sprite design to the game.  We decided to go with the minimalist art style, using colors and shapes to define the world instead of
+drawn or illustrated sprites that had depth.  The strict focus opened up a new dimension to play with, that being color denoting areas or objects of interest in the world, with shapes denoting more complicated encounters or mechanics based on the shape and color combination.
 
+Illumine contributed lighting and shading, and lots of it.  We initially did not know the direction we wanted to go in when designing the particle effects and lighting, and this
+showed early on.  As we developed the game, however, we quickly realized we could leverage lighting to our advantage, and used it to hide all sorts of stuff from the player, such
+as hidden passageways and enemy traps.  This lighting bled from the dungeon, where it originated, into the overworld, allowing some crazy overworld designs, such as writing words on the map and literally using it as an obstacle.  The player would never know the difference because they can't see all of it.
 
+Finally, Legend of Zelda contributed the map style.  The map style of Legend of Zelda played very nicely with our lighting and shadow style, allowing for almost hidden feeling rooms,
+dark dungeons, and otherwise visually interesting areas.  This primarily made its way into the overworld, with the dungeon being a more linear straight shot through, but traces of the Legend of Zelda dungeon style can still be seen in the dungeon layout.
 
 \section{Changes from Initial Design}
-Write about more foucus on dungeons, puzzles, and aesthetics! Lighting should probably be here too, along with cool particle facts!
+We initially planned on this to be combat-centric, focusing on the spells and systems therein.  This changed drastically once we realized what was possible with our given inspirations, and we combined the three in a different way.  What began as a spell-caster morphed into an exploration game with combat on the side, with lighting growing to be the main focus.
 
+Lighting played a huge role once we decided on shapes and colors.  Dim or bright lights began to take on meaning, while colors began denoting friend or foe.  This was the point during which the game experienced the largest growing pain, that being the shift in focus from combat to lighting.  This required the offshoot areas, part of the overworld, and the dungeon to go back to the drawing board for a bit.
+
+Once we had lighting figured out, shadows were a natural next step, and it did not disappoint.  The ability to combine creative shapes and colors with shadows to hide most of it created an environment the player wanted to explore, rather than an environment the player had already visually explored upon immediately entering any given room.  We tossed around the idea of having light be an environmental thing and the player casting these shadows, but this was quickly scrapped due to implementation difficulty and lack of interesting visual choice.
+
+The puzzles were a massive paradigm shift from the original combat idea.  We went from being a game about combat, elemental interactions, and spell-slinging, to a focus on visual design, exploration, and detail.  This was, by far, both the biggest change in the project as well as the easiest.  We had a very easy time making the transition, even though it was sudden and required us to return to the drawing board for large chunks of the game.
+
+Another leap in development occurred with particles, shortly after lighting.  Particles were something we wanted in some capacity, since they were usually good indicators and good player feedback, but we weren't sure how or where we wanted them.  Eventually we started with just basic door destruction particles, then went to plate activation particles, then on to damage particles.  This provided a sense of feedback for the player so they knew when they did something meaningful to the surrounding world.
 
 
 \section{Bumps We Hit Along the Way}
-We can all write about how stinky Vector movement is, and how our specific tasks were challenging otherwise.
-
+One bump we hit was lighting.  Even though it was a central focus of the game, it caused a fair amount of problems early on in implementation thanks to how godot handles lighting and shadows.  In godot, lighting and shadows are handled based on lighting layers, which is not uncommon.  The strange bit, however, is the occlusion detection - it does not automatically occlude light when you define occlusion boundaries.  You must tell the light it is specifically allowed to cast a shadow, then define occlusion boundaries - this was not made abundantly clear in the documentation during creation of the lighting systems within the game, which set us back a tiny bit.  You also must use a CanvasModulate node, which applies a filter over the camera/viewport, to darken the scene so the shadows will actually show up and the light will have an effect.  This, also, was not made abundantly clear in the documentation when designing the lighting.  These options are extremely flexible and allow for very fancy lights and shadows, but attempting to get them working was a minor hassle.
 
 
 \bibliographystyle{plain}
