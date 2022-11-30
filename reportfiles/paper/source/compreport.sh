@@ -20,4 +20,8 @@ wait $!
 
 pdflatex report.tex
 
+wait $!
+
+cp report.pdf ..
+
 echo "Compilation Complete"
