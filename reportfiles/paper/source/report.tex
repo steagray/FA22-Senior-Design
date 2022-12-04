@@ -136,82 +136,74 @@
 \numberofauthors{3}
 \author{%
   \alignauthor{James Nail\\
-    \affaddr{Sharon, USA}\\
     \email{jamgnail@ut.utm.edu}}\\
   \alignauthor{Logan Brown\\
-    \affaddr{City, Country}\\
-    \email{e-mail address}}\\
+    \email{logmbrow@ut.utm.edu}}\\
   \alignauthor{Steven Gray\\
-    \affaddr{City, Country}\\
-    \email{e-mail address}}\\
+    \email{steagray@ut.utm.edu}}\\
 }
 
 \maketitle
 
 \begin{abstract}
-Our project is Project Spellda, a two-dimensional, top down role playing game developed in Godot. Our game will minimally include 3 different levels: a tutorial level to introduce the mechanics of the game, followed by an overworld and dungeon that are intertwined. At the beginning of the game, the player will choose two of the four in-game elements: Fire, Water, Air, and Earth. The player then explores the surrounding area, looking for upgrades to their default spells. At any time, the player can dip into the dungeon to test their abilities on the stronger enemies that await them, with the end goal being to get to the center of the dungeon and slay the boss. The game is made entirely using Godot's built-in scripting language GDScript.
+Our project is \emph{Project Spellda}, a two-dimensional, top down role playing game developed in Godot. Our game will minimally include 3 different levels: a tutorial level to introduce the mechanics of the game, followed by an overworld and dungeon that are intertwined. At the beginning of the game, the player will choose two of the four in-game elements: Fire, Water, Air, and Earth. The player then explores the surrounding area, looking for upgrades to their default spells. At any time, the player can dip into the dungeon to test their abilities on the stronger enemies that await them, with the end goal being to get to the center of the dungeon and slay the boss. The game is made entirely using Godot's built-in scripting language GDScript.
 \end{abstract}
 
 
 % Author Keywords
-\keywords{\plainkeywords}
+% \keywords{\plainkeywords}
 
 
 
 \section{Introduction}
 
-Project Spellda is a top-down 2D arcade style RPG game, mixing elements from the likes of Legend of Zelda among other dungeon crawlers
-and RPGs of the era. The style of the game came from the games "Thomas Was Alone" and "Illumine". The game will have an overworld with a couple 
-different enemy types, along with several offshoot dungeon-like areas
-and one main dungeon existing under the overworld.  The dungeon will be relatively harder than the overworld, with better loot and harder
-bosses, as well as mechanics used in the dungeon-like offshoots found scattered in the overworld.  The overworld will have varied difficulties
-across numerous zones, with several of these difficulties tying directly to difficulties found within the dungeon.\\\\
-	
-The main feature of the game is the lighting style, which keeps anything that isn't in direct line of sight pitch black. This makes for interesting
-ways to explore areas around you, never knowing what is around the next corner.
-
+\emph{Project Sellda} is a top-down 2D RPG game, mixing gameplay inspiration from the Legend of Zelda, and other similar dungeon crawlers of the time.
+The games main feature is the design itself, with the game "Thomas Was Alone" inspiring the simplistic shapes design and "Illumine" giving heavy
+inspiration for the lighting style. The game has a tutorial, an overworld, offshoot areas, and a dungeon. The tutorial gives a realatively safe area
+for the player to move around and get used to the game. The overworld is a larger area that connects to the offshoots, as well as connecting to the
+dungeon which lies underneath the world itself.
 
 
 \section{Technical Specifications}
 
-We are using the Godot game engine\cite{godot}, with much of our scripting done in a built in language built specfic to the engine; GDScript (Godot Script).
+We are using the Godot game engine\cite{godot}, with much of our scripting done in a built in language built specfic to the engine; GDScript (Godot Script\cite{gdscript}).
 This language is very similar to Python, and has everything you need to use the engine to its fullest. This language even has specific commands for just
 the engine, which makes things very customizable.
 
-For Spriting, most of that was made in MS Paint. The simple measuring tools made it easy to have properly sized sprites that stuck to the simplistic art style
-we were shooting for in this project.
+For Spriting, most of that was made in MS Paint\cite{mspaint}. The simple measuring tools made it easy to have properly sized sprites that stuck to the simplistic art style
+we were shooting for in this project. For the most part, these sprites were made in a 64x64 pixel square and then given a see-through background. Later on
+in development, we revisited our sprites and gave them outlines to look a little cleaner.
 
 Some of our knowledge came from a wonderful playlist on youtube (from the youtuber "jmbiv"\cite{jmbiv}), showing how to do certain things so we could translate that knowledge to our project.
+This playlist in particular was a walkthrough of building a top-down 2D shooter, which helped us in showing examples of projectiles, enemy AI, simple design elements, and more. 
 
 
 
 \section{Motivations}
 
-Why did we choose to make a video game for our final project? Well, the answer is simple. Each of us had little experience in complete game design, but we were all avid gamers that were eager
-to learn what goes into the titles we all know and love. We saw this as a common point of interest and pursued it. Though, this wasn't the first idea that was floated around.
+When deciding what kind of project we wanted to approach, we looked to interests that we may not have known much about on a technical level.
+Each of us had little experience in complete game design, but we were all avid gamers that were eager
+to learn what goes into the titles we all know and love. We saw this as a common point of interest and pursued it.
 
-Early on in deciding what to make, there were a few thoughts. Minecraft modding was a possibility, but we all agreed that coding into something that already exists could be more trouble than
-it's worth to figure out. Once that was ruled out, outright game developement was suggested and was a favorite. We eventually settled to use the Godot game engine, but only knew roughly that
-we wanted a game with magic in it.
-
+Knowing what we wanted, reasearch went into the different engines we wanted to use. We eventually landed on Godot because of its dedicated
+2D game environment and the custom Python-like langauge (GDScript) that could interact with GUI tools through code; Unlike other supported
+languages for the game development tool.
 
 
 \section{Game Overview}
-
-Once we had a general idea of what we wanted to use for game-making, we started to iron out details. So, we made an outline of what we wanted in the game.
 
 The first thing we wanted was three different areas that the player could explore; A tutorial, an overworld, and a dungeon. The tutorial area would be, of course,
 a small place that players could learn in and test controls in. The overworld would be a larger area, in which the player would explore and get into all kinds of
 trouble. The dungeon was to be the final place the player would encounter, and have trials fitting for someone who had made it thus far.
 
-Secondly, we wanted a minimum of 4 types of enemies. We generally categorized this further by saying we wanted two melee enemies and two ranged enemies. While
+We wanted a minimum of 4 types of enemies. We generally categorized this further by saying we wanted two melee enemies and two ranged enemies. While
 we had no specific ideas, we were thinking of having it so that enemies would be designed as simple shapes.
 
-Third, we wanted the player to have the option of 4 different elements to use in spellcasting. To clarify; the player can only have two spells at a time, but they
+We wanted the player to have the option of 4 different elements to use in spellcasting. To clarify; the player can only have two spells at a time, but they
 get to choose two from a pool of four. This was just our starting point, as the four basic elements (water, fire, earth, air) were the first things to pop to mind.
 We considered that in the future we could add different, not-so-common types of magic to the game.
 
-Finally, we wanted different puzzles and "offshoot" areas that would encourage the player to explore around the maps and really find everything they can. This was
+We wanted different puzzles and "offshoot" areas that would encourage the player to explore around the maps and really find everything they can. This was
 really from our own experiences as players, making sure that there was plenty to do that was interesting in this game.
 
 \newpage
@@ -223,15 +215,26 @@ Thomas Was Alone contributed a majority of the sprite design to the game.  We de
 drawn or illustrated sprites that had depth.  The strict focus opened up a new dimension to play with, that being color denoting areas or objects of interest in the world, with shapes denoting more 
 complicated encounters or mechanics based on the shape and color combination.
 
+Here is an image from Thomas Was Alone:
+
+\includegraphics[width=7cm, height=5cm]{./figures/thomas.jpg}
+
 Illumine contributed lighting and shading, and lots of it.  We initially did not know the direction we wanted to go in when designing the particle effects and lighting, and this
 showed early on.  As we developed the game, however, we quickly realized we could leverage lighting to our advantage, and used it to hide all sorts of stuff from the player, such
 as hidden passageways and enemy traps.  This lighting bled from the dungeon, where it originated, into the overworld, allowing some crazy overworld designs, such as writing words on the 
 map and literally using it as an obstacle.  The player would never know the difference because they can't see all of it.
 
+Here is an image from Illumine:
+
+\includegraphics*[width=7cm, height=5cm]{./figures/illumine.png}
+
 Finally, Legend of Zelda contributed the map style.  The map style of Legend of Zelda played very nicely with our lighting and shadow style, allowing for almost hidden feeling rooms,
 dark dungeons, and otherwise visually interesting areas.  This primarily made its way into the overworld, with the dungeon being a more linear straight shot through, but traces 
 of the Legend of Zelda dungeon style can still be seen in the dungeon layout.
 
+Here is an image from Legend of Zelda:
+
+\includegraphics*[width=7cm, height=5cm]{./figures/zelda.png}
 \section{Changes from Initial Design}
 We initially planned on this to be combat-centric, focusing on the spells and systems therein.  This changed drastically once we realized what was possible with our given inspirations, and we combined 
 the three in a different way.  What began as a spell-caster morphed into an exploration game with combat on the side, with lighting growing to be the main focus.  The combat just wasn't anywhere near
@@ -252,11 +255,11 @@ to the drawing board for large chunks of the game.
 
 Here is what our design looked like before the consideration; Dull and flat, with little room for improvement in the direction we were going.
 
-\includegraphics*[width=8.5cm, height=6cm]{./figures/earlyproj.png}
+\includegraphics*[width=7cm, height=5cm]{./figures/earlyproj.png}
 
 Here is the game with updated lighting, which we considered a massive improvement upon what we were planning originally.
 
-\includegraphics*[width=8.5cm, height=6cm]{./figures/ourgame.png}
+\includegraphics*[width=7cm, height=5cm]{./figures/ourgame.png}
 
 Another leap in development occurred with particles, shortly after lighting.  Particles were something we wanted in some capacity, since they were usually good indicators and good player feedback, but 
 we weren't sure how or where we wanted them.  Eventually we started with just basic door destruction particles, then went to plate activation particles, then on to damage particles.  This provided a 
@@ -264,25 +267,24 @@ sense of feedback for the player so they knew when they did something meaningful
 
 A lesser discussed aspect that changed was a lot of back-end implementational details.  We fundamentally changed how the spells worked at least once or twice behind the scenes, and the 
 spells were their own separate nightmare to get working.  Once we got spells working, though, not too much else got reworked side from one major code overhaul for the dungeon and its mechanics.
-\newpage
 
 \section{Planning and Pre-Development}
-Before we began development, we did plenty of tabletop planning.  This planning included hand-drawn and digital sketches of dungeon, overworlds, and offshoot areas, as well as enemy designs, boss designs, and player designs.  Some of the digital planning was done using Google sheets to "map" out the dungeon, overworld, and offshoot areas.
+Before we began development, we did plenty of tabletop planning.  This planning included hand-drawn and digital sketches of dungeon, overworlds, 
+and offshoot areas, as well as enemy designs, boss designs, and player designs.  Some of the digital planning was done using Google sheets\cite{googlesheets} to "map" out the dungeon, overworld, and offshoot areas.
 
-\includegraphics*[width=8.5cm, height=6cm]{./figures/designexample.png}
+\includegraphics*[width=7cm, height=5cm]{./figures/designexample.png}
 
 We also originally planned the spell system fairly extensively.  We discussed having four elements with a rock-paper-scissors style relation that also worked backwards for resistances.  This way, the player would always have at least one element they were super-effective against and two they were neutral against.  This, however, did not make it into the final product for change of focus from spellcasting to adventuring.
 
 When planning the dungeon, we drew up several designs.  One design was a spider-web design, with the player entering in the center and branching out to fight several bosses.  Another design was a linear straight-line design, where the player simply battled down a hallway.  Another design was a maze-like array of rooms, which we ended up settling on, ending in a final boss room.
 
-\includegraphics*[width=8.5cm, height=6cm]{./figures/DungeonLayout.png}
+\includegraphics*[width=7cm, height=5cm]{./figures/DungeonLayout.png}
 
 When planning the offshoot areas, almost all of them made it into the final product.  Only a couple were scrapped, which we are fairly proud of.  The offshoot areas were planned roughly the same way as the dungeon, mainly on Google sheets.
 
 When planning the overworld, we planned it in chunks.  Rather than plan each room individually, we planned how the rooms would be laid out, then dropped the room designs in.  This proved to be quite effective for designing an interesting overworld.
 
-\includegraphics*[width=8.5cm, height=6cm]{./figures/overworld.png}
-
+\includegraphics*[width=7cm, height=5cm]{./figures/overworld.png}
 We did spend an unusually large amount of time during this planning and pre-development stage, but it did not hurt the final product too bad in the long run.  We got nearly all the features implemented that we wanted, despite the time block dedicated to planning chewing up a lot of our time.
 
 \section{Bumps We Hit Along the Way}
@@ -308,6 +310,14 @@ We had to learn to work with the tools we were given.  For some of us, that was 
 We also ran into problems with organizing our time and teamwork effectively.  Our teamwork was not really there; we operated as a group of individuals rather than a team and we frequently went off and worked on whatever aspect looked most interesting to us at the time.  This hindered possibilities for what could be developed moving forwards, and is something we would all change if given the chance.
 
 We struggled with time management as well.  We spent an absorbent amount of time planning out our game, which chewed into our development time and forced some crunch time.  While we are not unfamiliar with crunch time, it happened too frequently for comfort, and is something we wish we could go back and change if given the opportunity.  
+
+
+\section{Conclusion}
+\emph{Project Spellda} came out well overall, especially considering the time frame and experience that we had. The game was designed with the lighting style in mind, and uses this lighting style
+to give a better over-all feel to the games appearance and gameplay. There is a working tutorial level with working pickups and enemies. There is an overworld to explore with enemies and other pathways
+to offshoot areas with their own challenges and looks. There is a dungeon with puzzles and enemies, with a boss to finish out the gameplay. We accomplished all of this using Godot and the native
+language, GDScript. All three group members learned a great deal from this, and plan to take what they learned throughout the project with their own, individual projects as hobbies.
+
 
 \bibliographystyle{plain}
 \bibliography{bibliography}

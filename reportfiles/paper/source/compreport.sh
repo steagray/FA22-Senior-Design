@@ -8,7 +8,7 @@ wait $!
 
 echo "Adding Bibliography..."
 
-bibtex report.tex
+bibtex report.aux
 
 wait $!
 
