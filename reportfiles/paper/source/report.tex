@@ -264,7 +264,26 @@ sense of feedback for the player so they knew when they did something meaningful
 
 A lesser discussed aspect that changed was a lot of back-end implementational details.  We fundamentally changed how the spells worked at least once or twice behind the scenes, and the 
 spells were their own separate nightmare to get working.  Once we got spells working, though, not too much else got reworked side from one major code overhaul for the dungeon and its mechanics.
+\newpage
 
+\section{Planning and Pre-Development}
+Before we began development, we did plenty of tabletop planning.  This planning included hand-drawn and digital sketches of dungeon, overworlds, and offshoot areas, as well as enemy designs, boss designs, and player designs.  Some of the digital planning was done using Google sheets to "map" out the dungeon, overworld, and offshoot areas.
+
+\includegraphics*[width=8.5cm, height=6cm]{./figures/designexample.png}
+
+We also originally planned the spell system fairly extensively.  We discussed having four elements with a rock-paper-scissors style relation that also worked backwards for resistances.  This way, the player would always have at least one element they were super-effective against and two they were neutral against.  This, however, did not make it into the final product for change of focus from spellcasting to adventuring.
+
+When planning the dungeon, we drew up several designs.  One design was a spider-web design, with the player entering in the center and branching out to fight several bosses.  Another design was a linear straight-line design, where the player simply battled down a hallway.  Another design was a maze-like array of rooms, which we ended up settling on, ending in a final boss room.
+
+\includegraphics*[width=8.5cm, height=6cm]{./figures/DungeonLayout.png}
+
+When planning the offshoot areas, almost all of them made it into the final product.  Only a couple were scrapped, which we are fairly proud of.  The offshoot areas were planned roughly the same way as the dungeon, mainly on Google sheets.
+
+When planning the overworld, we planned it in chunks.  Rather than plan each room individually, we planned how the rooms would be laid out, then dropped the room designs in.  This proved to be quite effective for designing an interesting overworld.
+
+\includegraphics*[width=8.5cm, height=6cm]{./figures/overworld.png}
+
+We did spend an unusually large amount of time during this planning and pre-development stage, but it did not hurt the final product too bad in the long run.  We got nearly all the features implemented that we wanted, despite the time block dedicated to planning chewing up a lot of our time.
 
 \section{Bumps We Hit Along the Way}
 One bump we hit was lighting.  Even though it was a central focus of the game, it caused a fair amount of problems early on in implementation thanks to how godot handles lighting and shadows.  
@@ -283,6 +302,12 @@ on simply changing the \emph{local} y-coordinates every frame by a set amount, u
 things, including enemies. Enemies were its own bag of fun, but ultimately we could not compromise on vector-based movement here. This took way longer than it should of, but eventually with the help
 of the magic we call "team work", we were able to implement this. I will save the trouble of all the details, but we were fairly close to what our initial idea of how vector based movement should work.
 Godot just has a particular way that it likes to handle this type of movement in a 2D space, and it was simply a matter of getting a better understanding of our tools available to us.
+
+We had to learn to work with the tools we were given.  For some of us, that was easy to do.  For others, it was more difficult.  We are used to recreating all the tools we need from scratch, so learning to work within an engine was difficult for us at first.  We attempted to recreate our tools yet again, only to learn that they were built into the engine, and such was not necessary.
+
+We also ran into problems with organizing our time and teamwork effectively.  Our teamwork was not really there; we operated as a group of individuals rather than a team and we frequently went off and worked on whatever aspect looked most interesting to us at the time.  This hindered possibilities for what could be developed moving forwards, and is something we would all change if given the chance.
+
+We struggled with time management as well.  We spent an absorbent amount of time planning out our game, which chewed into our development time and forced some crunch time.  While we are not unfamiliar with crunch time, it happened too frequently for comfort, and is something we wish we could go back and change if given the opportunity.  
 
 \bibliographystyle{plain}
 \bibliography{bibliography}
