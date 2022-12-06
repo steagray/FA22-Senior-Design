@@ -29,7 +29,6 @@ func _ready():
 		get_parent().call_deferred("add_child", camera)
 		call_deferred("emit_signal", "camTransfer")
 	camera.add_child(UI)
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

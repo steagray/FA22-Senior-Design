@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/DungeonLayout.png-7d45da6fa09b1918457c88c4ace35d88.stex"
+path="res://.import/DungeonLayout.png-a6168801185616ebbd36097bc072b84a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reportfiles/presentation/source/figures/DungeonLayout.png"
-dest_files=[ "res://.import/DungeonLayout.png-7d45da6fa09b1918457c88c4ace35d88.stex" ]
+source_file="res://reportfiles/paper/source/figures/DungeonLayout.png"
+dest_files=[ "res://.import/DungeonLayout.png-a6168801185616ebbd36097bc072b84a.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/designexample.png-f87aa08b475390746f91c437776e4469.stex"
+path="res://.import/designexample.png-25f9fba47bdc7b608fd302462e91c162.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reportfiles/presentation/source/figures/designexample.png"
-dest_files=[ "res://.import/designexample.png-f87aa08b475390746f91c437776e4469.stex" ]
+source_file="res://reportfiles/paper/source/figures/designexample.png"
+dest_files=[ "res://.import/designexample.png-25f9fba47bdc7b608fd302462e91c162.stex" ]
 
 [params]
 

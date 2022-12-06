@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ourgame.png-453e0d31beb2f922079f87bddacbf169.stex"
+path="res://.import/ourgame.png-adcd65da0d2e5b352e16e1a2ad103e9e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reportfiles/presentation/source/figures/ourgame.png"
-dest_files=[ "res://.import/ourgame.png-453e0d31beb2f922079f87bddacbf169.stex" ]
+source_file="res://reportfiles/paper/source/figures/ourgame.png"
+dest_files=[ "res://.import/ourgame.png-adcd65da0d2e5b352e16e1a2ad103e9e.stex" ]
 
 [params]
 

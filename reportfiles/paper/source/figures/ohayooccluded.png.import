@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ohayooccluded.png-f8568ec31db0b233473ad43cf487673d.stex"
+path="res://.import/ohayooccluded.png-72076212cbccebb1e8b0d60fc6ecfaa3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reportfiles/presentation/source/figures/ohayooccluded.png"
-dest_files=[ "res://.import/ohayooccluded.png-f8568ec31db0b233473ad43cf487673d.stex" ]
+source_file="res://reportfiles/paper/source/figures/ohayooccluded.png"
+dest_files=[ "res://.import/ohayooccluded.png-72076212cbccebb1e8b0d60fc6ecfaa3.stex" ]
 
 [params]
 

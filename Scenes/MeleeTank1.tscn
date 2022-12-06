@@ -22,7 +22,6 @@ radius = 37.0
 radius = 566.149
 
 [node name="MeleeTank1" type="KinematicBody2D"]
-collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

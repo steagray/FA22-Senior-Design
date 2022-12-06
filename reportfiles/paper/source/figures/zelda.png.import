@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zelda.png-c34da12c4e09c478b6ff5f22bc0dc4af.stex"
+path="res://.import/zelda.png-23700303ea8a447e2029db0096e51bf4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reportfiles/presentation/source/figures/zelda.png"
-dest_files=[ "res://.import/zelda.png-c34da12c4e09c478b6ff5f22bc0dc4af.stex" ]
+source_file="res://reportfiles/paper/source/figures/zelda.png"
+dest_files=[ "res://.import/zelda.png-23700303ea8a447e2029db0096e51bf4.stex" ]
 
 [params]
 

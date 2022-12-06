@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/thomas.jpg-6502532752df82b10ac84f897d01e201.stex"
+path="res://.import/thomas.jpg-9d2525e03453784de32da26c1b8f44bc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reportfiles/presentation/source/figures/thomas.jpg"
-dest_files=[ "res://.import/thomas.jpg-6502532752df82b10ac84f897d01e201.stex" ]
+source_file="res://reportfiles/paper/source/figures/thomas.jpg"
+dest_files=[ "res://.import/thomas.jpg-9d2525e03453784de32da26c1b8f44bc.stex" ]
 
 [params]
 

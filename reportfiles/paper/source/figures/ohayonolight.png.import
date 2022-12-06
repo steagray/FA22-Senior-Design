@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ohayonolight.png-8adefcf675887e56260f7788e30c258f.stex"
+path="res://.import/ohayonolight.png-a72c5665e19b9a46b10d8e6fbc5bdffe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reportfiles/presentation/source/figures/ohayonolight.png"
-dest_files=[ "res://.import/ohayonolight.png-8adefcf675887e56260f7788e30c258f.stex" ]
+source_file="res://reportfiles/paper/source/figures/ohayonolight.png"
+dest_files=[ "res://.import/ohayonolight.png-a72c5665e19b9a46b10d8e6fbc5bdffe.stex" ]
 
 [params]
 

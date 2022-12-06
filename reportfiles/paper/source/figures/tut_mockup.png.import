@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tut_mockup.png-b937e823a45a5f8e4d47e87995fe7a9a.stex"
+path="res://.import/tut_mockup.png-17f301a9325b4b28a7c1926c56ac850a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reportfiles/presentation/source/figures/tut_mockup.png"
-dest_files=[ "res://.import/tut_mockup.png-b937e823a45a5f8e4d47e87995fe7a9a.stex" ]
+source_file="res://reportfiles/paper/source/figures/tut_mockup.png"
+dest_files=[ "res://.import/tut_mockup.png-17f301a9325b4b28a7c1926c56ac850a.stex" ]
 
 [params]
 

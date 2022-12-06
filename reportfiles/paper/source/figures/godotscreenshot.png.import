@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/godotscreenshot.png-c2f18ce07ac5cd75164fca0e8e43d1eb.stex"
+path="res://.import/godotscreenshot.png-0ce8395d022b87257834854ad079e9db.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reportfiles/presentation/source/figures/godotscreenshot.png"
-dest_files=[ "res://.import/godotscreenshot.png-c2f18ce07ac5cd75164fca0e8e43d1eb.stex" ]
+source_file="res://reportfiles/paper/source/figures/godotscreenshot.png"
+dest_files=[ "res://.import/godotscreenshot.png-0ce8395d022b87257834854ad079e9db.stex" ]
 
 [params]
 

@@ -24,5 +24,4 @@ func _camZone_entered(body):
 			self.position.y -= get_viewport().size.y * self.zoom.y
 		"Down":
 			self.position.y += get_viewport().size.y * self.zoom.y
-	
-	# TODO: Add moving in that direction
+	stats.campos = position

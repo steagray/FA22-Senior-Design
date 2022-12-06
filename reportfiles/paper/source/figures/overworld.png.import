@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/overworld.png-0bed8ac861051292d3255de83ae755d6.stex"
+path="res://.import/overworld.png-476ea9b7be2a436bdb86289797eb8640.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reportfiles/presentation/source/figures/overworld.png"
-dest_files=[ "res://.import/overworld.png-0bed8ac861051292d3255de83ae755d6.stex" ]
+source_file="res://reportfiles/paper/source/figures/overworld.png"
+dest_files=[ "res://.import/overworld.png-476ea9b7be2a436bdb86289797eb8640.stex" ]
 
 [params]
 
