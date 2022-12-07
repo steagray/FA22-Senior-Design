@@ -190,3 +190,42 @@ func _on_Plate4_body_entered(body):
 		Room4Plates[3] = true
 		activate_plate_paricles(-22,38)
 		open_vertical_door(-67, 20, 23)
+
+
+signal BossMechanicCompleted
+
+var BossMechanic = [false, false, false]
+
+func _on_Boss_HealthGate():
+	BossMechanic[0] = false
+	BossMechanic[1] = false
+	BossMechanic[2] = false
+	pass # Replace with function body.
+
+
+func _on_BPlate1_body_entered(body):
+	if BossMechanic[0] == false:
+		BossMechanic[0] = true
+		activate_plate_paricles(-83,1)
+		CheckBossMechanic()
+	pass # Replace with function body.
+
+
+func _on_BPlate2_body_entered(body):
+	if BossMechanic[1] == false:
+		BossMechanic[1] = true
+		activate_plate_paricles(-139,1)
+		CheckBossMechanic()
+	pass # Replace with function body.
+
+
+func _on_BPlate3_body_entered(body):
+	if BossMechanic[2] == false:
+		BossMechanic[2] = true
+		activate_plate_paricles(-139,43)
+		CheckBossMechanic()
+	pass # Replace with function body.
+
+func CheckBossMechanic():
+	if BossMechanic[0] == true and BossMechanic[1] == true and BossMechanic[2] == true:
+		emit_signal("BossMechanicCompleted")
