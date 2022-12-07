@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boss_sheet.png-3c1517b9d954c66cd425af5198c13659.stex"
+path="res://.import/button UI.png-01e47c2d2a12f7d9fa632baebe943628.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Boss/boss_sheet.png"
-dest_files=[ "res://.import/boss_sheet.png-3c1517b9d954c66cd425af5198c13659.stex" ]
+source_file="res://Assets/UI/button UI.png"
+dest_files=[ "res://.import/button UI.png-01e47c2d2a12f7d9fa632baebe943628.stex" ]
 
 [params]
 
