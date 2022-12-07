@@ -1,0 +1,105 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/Boss/boss_sheet.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/boss_script.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Boss/spin_1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Boss/spin_3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Boss/spin_2.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 566.149
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Spin",
+"speed": 5.0
+} ]
+
+[sub_resource type="Curve" id=5]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, -360 ), 0.0, 0.0, 0, 0, Vector2( 1, 360 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.612903 )
+colors = PoolColorArray( 1, 0, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0 ), 0.0, 12.7836, 0, 0, Vector2( 1, 0 ), -2.88961, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 0.55
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 89.11
+initial_velocity_random = 0.61
+angular_velocity = 34.07
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -25.74
+angle = 399.2
+angle_random = 0.27
+angle_curve = SubResource( 6 )
+scale = 20.0
+scale_random = 0.32
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 8 )
+
+[node name="Boss" type="KinematicBody2D"]
+position = Vector2( 494, 294 )
+scale = Vector2( 2, 2 )
+collision_layer = 2
+collision_mask = 17
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.201538, -0.693024 )
+scale = Vector2( 1.23118, 1.2248 )
+z_index = 1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 62, 64 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -18.5, 28.5, -32, -8.5, 1, -32, 33.5, -8, 20, 28.5 )
+
+[node name="MovementTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1, 0 )
+scale = Vector2( 1.6, 1.6 )
+frames = SubResource( 3 )
+animation = "Spin"
+frame = 1
+playing = true
+
+[node name="TeleportParticles" type="Particles2D" parent="."]
+z_index = 1
+emitting = false
+amount = 100
+lifetime = 3.0
+explosiveness = 0.85
+process_material = SubResource( 4 )
+
+[connection signal="timeout" from="MovementTimer" to="." method="_on_MovementTimer_timeout"]
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_PlayerEnter"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_PlayerExit"]

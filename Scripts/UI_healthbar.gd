@@ -11,8 +11,6 @@ func _ready():
 	max_value = 8
 	value = stats.health
 
-func on_onHeal():
-	value = stats.health
 
 func on_onDamage():
 	value = stats.health

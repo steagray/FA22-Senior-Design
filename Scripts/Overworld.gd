@@ -24,7 +24,7 @@ func _on_trap1(body):
 func _on_Secret1_body_entered(body):	
 	if body.get_instance_id() == $KinematicPlayer2D.get_instance_id():
 		stats.owpos = $OverworldZones/Secret1/Position2D.global_position
-		get_tree().change_scene("res://Scenes/Off-Shoots/Enemy Test Scene.tscn")
+		get_tree().change_scene("res://Scenes/Enemy Test Scene.tscn")
 
 
 func _on_Tower_body_entered(body):
