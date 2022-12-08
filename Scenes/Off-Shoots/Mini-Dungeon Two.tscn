@@ -21,15 +21,12 @@ position = Vector2( 226, -30 )
 
 [node name="MeleeTank1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 696, -117 )
-collision_mask = 1
 
 [node name="MeleeTank2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 965, -1899 )
-collision_mask = 1
 
 [node name="MeleeTank3" parent="." instance=ExtResource( 3 )]
 position = Vector2( -893, -1276 )
-collision_mask = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 227, 48 )
